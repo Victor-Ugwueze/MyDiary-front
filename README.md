@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/Victor-Ugwueze/MyDiary-front.svg?branch=develop)](https://travis-ci.org/Victor-Ugwueze/MyDiary-front)
