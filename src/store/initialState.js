@@ -2,10 +2,17 @@
  * @desc the initial state on the application
 */
 const initialState = {
-  data: {
-    loading: false,
-    progress: false,
-  }
+  auth: {
+    signup: {
+      isAuth: false,
+      registered: false,
+      progress: false,
+    },
+    user: {
+
+    },
+    isAuth: false,
+  },
 };
 
 export default initialState;

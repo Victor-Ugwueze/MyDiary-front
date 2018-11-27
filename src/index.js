@@ -11,7 +11,8 @@ import configureStore from './store/configureStore';
 // action
 import { sampleAction } from './actions/sample';
 // compoents
-import App from './components/App';
+import App from './components/Router';
+import './styles/index.scss';
 
 const store = configureStore();
 store.dispatch(sampleAction());
