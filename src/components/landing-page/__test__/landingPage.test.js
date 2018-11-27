@@ -8,7 +8,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 // modules importation
 import SignupForm from '../SignupForm';
-import SignupPage from '../LandingPage';
+import LandingPage from '../LandingPage';
 import LoginForm from '../LoginForm';
 import HeroSection from '../HeroSection';
 
@@ -42,7 +42,7 @@ describe('Renders the singup page', () => {
 
   it('should render the signup page', () => {
     const component = shallow(
-      <SignupPage />
+      <LandingPage auth={{ isAuth: true }}/>
     );
     expect(component).toMatchSnapshot();
   });

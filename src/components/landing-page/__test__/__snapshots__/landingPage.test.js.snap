@@ -214,50 +214,14 @@ exports[`Renders the singup page should render the signup form 1`] = `
 `;
 
 exports[`Renders the singup page should render the signup page 1`] = `
-<Fragment>
-  <HeaderHome
-    openModal={[Function]}
-  />
-  <HeroSection />
-  <section>
-    <Modal
-      isModalOpen={false}
-    >
-      <div
-        className="nav-tabs"
-        role="tablist"
-      >
-        <a
-          className="nav-item false"
-          data-toggle="login"
-          id="select-tab-login"
-          onClick={[Function]}
-          role="tab"
-        >
-          Login
-        </a>
-        <a
-          className="nav-item false"
-          data-toggle="signup"
-          id="select-tab-signup"
-          onClick={[Function]}
-          role="tab"
-        >
-          Sign Up
-        </a>
-      </div>
-      <div
-        className="tab-conten row"
-      >
-        <LoginForm
-          show={false}
-        />
-        <SignupForm
-          show={false}
-        />
-      </div>
-    </Modal>
-  </section>
-  <Footer />
-</Fragment>
+<Redirect
+  push={false}
+  to={
+    Object {
+      "isAuth": true,
+      "pathname": "/dashboard",
+      "user": undefined,
+    }
+  }
+/>
 `;
