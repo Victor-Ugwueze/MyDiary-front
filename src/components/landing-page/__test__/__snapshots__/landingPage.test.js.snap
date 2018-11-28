@@ -26,6 +26,19 @@ exports[`Renders the singup page should render the hero section of landing page 
 </main>
 `;
 
+exports[`Renders the singup page should render the landing page 1`] = `
+<Redirect
+  push={false}
+  to={
+    Object {
+      "isAuth": true,
+      "pathname": "/dashboard",
+      "user": undefined,
+    }
+  }
+/>
+`;
+
 exports[`Renders the singup page should render the login form 1`] = `
 <div
   className="tab-pane "
@@ -211,17 +224,4 @@ exports[`Renders the singup page should render the signup form 1`] = `
     </div>
   </form>
 </div>
-`;
-
-exports[`Renders the singup page should render the signup page 1`] = `
-<Redirect
-  push={false}
-  to={
-    Object {
-      "isAuth": true,
-      "pathname": "/dashboard",
-      "user": undefined,
-    }
-  }
-/>
 `;

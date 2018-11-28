@@ -40,7 +40,7 @@ describe('Renders the singup page', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should render the signup page', () => {
+  it('should render the landing page', () => {
     const component = shallow(
       <LandingPage auth={{ isAuth: true }}/>
     );
