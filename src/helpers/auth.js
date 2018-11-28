@@ -36,7 +36,7 @@ const auth = {
       return false;
     }
     const currentTime = Date.now() / 1000;
-    if (decoded.exp < currentTime) {
+    if (decoded.exp < currentTime || decoded.exp === undefined) {
       return false;
     }
     return true;

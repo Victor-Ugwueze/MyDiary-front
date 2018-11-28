@@ -81,7 +81,20 @@ class LandingPage extends Component {
     }
   }
 
+  login = (event) => {
+    event.preventDefault();
+    const data = this.getFormInput(event.target);
+    const errors = validator.validate(this.state, [
+      'email',
+    ]);
+    console.log(errors);
+    if (!errors.length > 0) {
+      this.props.doLogin(data);
+    }
+  }
+
   onChange = (event) => {
+    console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -124,7 +137,9 @@ class LandingPage extends Component {
             </div>
             <div className="tab-conten row">
               <LoginForm
-              show={this.state.login} />
+              onChange={this.onChange}
+              show={this.state.login}
+              onSubmit={this.login} />
               <SignupForm
                 onChange={this.onChange}
                 onSubmit={this.signup}

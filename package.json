@@ -9,7 +9,7 @@
     "lint": "eslint /src --fix",
     "build": "webpack --config webpack.config.prod.js",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --progress --hot --open",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "jest": {
     "transform": {

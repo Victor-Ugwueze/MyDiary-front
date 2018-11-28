@@ -7,10 +7,10 @@ const validator = {
   },
 
   validate: (req, inputs) => {
+    validator.requestsInput = req;
     validator.errors = [];
     Object.getOwnPropertyNames(validator).filter((name) => {
       if (inputs.indexOf(name) !== -1) {
-        validator.requestsInput = req;
         if (name === 'password') {
           validator[name]('');
         } else {
