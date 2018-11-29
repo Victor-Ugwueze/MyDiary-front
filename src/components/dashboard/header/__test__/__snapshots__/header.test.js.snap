@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders modals should render the header component 1`] = `
+<header
+  className="dashboard-header"
+>
+  <img
+    className="loading-indicator"
+    src="/images/loading_spinner.gif"
+  />
+  <span
+    className="icon-bar menu-icon"
+    onClick={[Function]}
+  />
+  <div
+    id="top-bar"
+  >
+    <div
+      className="brand"
+    >
+      <img
+        id="logo"
+        src="/images/logo.png"
+      />
+    </div>
+    <nav>
+      <ul
+        className="navbar"
+      >
+        <div
+          id="notification-icon"
+        >
+          <img
+            src="/images/icons/notification_white_1.png"
+          />
+        </div>
+        <li
+          className="nav-link"
+        >
+          <div
+            className="dropdown"
+          >
+            <div
+              className="user-img"
+            >
+              <img
+                alt=""
+                className="profile-img"
+                src="/images/avatar.png"
+              />
+              <span
+                id="menu-firstname"
+              />
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+`;

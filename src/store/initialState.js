@@ -1,6 +1,6 @@
 /**
  * @desc the initial state on the application
-*/
+ */
 const initialState = {
   auth: {
     signup: {
@@ -8,9 +8,11 @@ const initialState = {
       registered: false,
       progress: false,
     },
-    user: {
-
+    login: {
+      isAuth: false,
+      progress: false,
     },
+    user: {},
     isAuth: false,
   },
 };

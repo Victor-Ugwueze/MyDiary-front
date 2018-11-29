@@ -36,4 +36,53 @@ describe('Input Validator test', () => {
     ]);
     expect(validateErrors[0].message).toBe('Email is required');
   });
+
+  it('should return invalid email', () => {
+    const validateErrors = validator.validate({ email: 'vuoh@gmail' }, [
+      'email'
+    ]);
+    expect(validateErrors[0].message).toBe('Please enter a valid email address.');
+  });
+
+  it('should return phonenumber is required', () => {
+    const validateErrors = validator.validate({ phone: '' }, [
+      'phone'
+    ]);
+    expect(validateErrors[0].message).toBe('Phone number is required');
+  });
+
+  it('should return phonenumber is required', () => {
+    const validateErrors = validator.validate({ phone: 'fdvev344rg' }, [
+      'phone'
+    ]);
+    expect(validateErrors[0].message).toBe('please enter a valid phone number');
+  });
+
+  it('should return error in name', () => {
+    const validateErrors = validator.validate({ firstname: '', lastname: '', username: '' }, [
+      'name'
+    ]);
+    expect(validateErrors[0].message).toBe('firsname must should be more than five characters');
+  });
+
+  it('should return password is required', () => {
+    const validateErrors = validator.validate({ password: '' }, [
+      'password'
+    ]);
+    expect(validateErrors[0].message).toBe('Password is required');
+  });
+
+  it('should return password length error', () => {
+    const validateErrors = validator.validate({ password: 'bnb5' }, [
+      'password'
+    ]);
+    expect(validateErrors[0].message).toBe('Password lenght should be greater than 6 and less than 12');
+  });
+
+  it('should return password mismatch', () => {
+    const validateErrors = validator.validate({ password: 'bnb566666', confirmPassword: 'ccdd' }, [
+      'password'
+    ]);
+    expect(validateErrors[0].message).toBe('Password do not match');
+  });
 });
