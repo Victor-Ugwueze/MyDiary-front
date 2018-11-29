@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders modals should render add entry modal 1`] = `
+<div
+  className="modal show"
+  id="add-new-entry"
+>
+  <div
+    className="modal-content col-2"
+  >
+    <div
+      className="modal-heading"
+    >
+      <div
+        id="title"
+      >
+        <h4>
+          Add Entry
+        </h4>
+      </div>
+      <div
+        className="close close-btn"
+        data-target="add-new-entry"
+      >
+        X
+      </div>
+      <div
+        className="alert error-flash"
+      />
+    </div>
+    <form
+      encType="application/x-www-form-urlencoded"
+      id="add-entry-form"
+    >
+      <div
+        className="form-row"
+      >
+        <div
+          className="row"
+        >
+          <input
+            className="form-input"
+            id=""
+            name="title"
+            placeholder="What is on your mind ?"
+            type="text"
+          />
+        </div>
+        <div
+          className="row"
+        >
+          <textarea
+            className="entry-body"
+            cols="30"
+            name="body"
+            rows="10"
+          />
+        </div>
+        <div>
+          <input
+            className="btn btn-primary"
+            id="add-entry-submit"
+            type="submit"
+            value="Create Entry"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Renders modals should render change password modal 1`] = `
+<div
+  className="modal"
+  id="update-password"
+>
+  <div
+    className="modal-content col-2"
+  >
+    <div
+      className="modal-heading row"
+    >
+      <div
+        id="title"
+      >
+        <h4>
+          Change password
+        </h4>
+      </div>
+      <div
+        className="close close-btn"
+        data-target="update-password"
+      >
+        X
+      </div>
+    </div>
+    <form
+      encType="application/x-www-form-urlencoded"
+      id="change-password"
+    >
+      <div
+        className="errors"
+        id="password-error"
+      />
+      <div
+        className="item"
+      >
+        <label
+          htmlFor="firstname"
+        >
+          Current password
+        </label>
+        <input
+          className="form-input"
+          name="currentPassword"
+          type="password"
+        />
+      </div>
+      <div
+        className="item"
+      >
+        <label
+          htmlFor="lastname"
+        >
+          New password
+        </label>
+        <input
+          className="form-input"
+          name="password"
+          type="password"
+        />
+      </div>
+      <div
+        className="item"
+      >
+        <label
+          htmlFor="lastname"
+        >
+          New password
+        </label>
+        <input
+          className="form-input"
+          name="confirmPassword"
+          type="password"
+        />
+      </div>
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+        Change
+      </button>
+      <span
+        className="hide saving-settings-indicator"
+      >
+        Updating...
+      </span>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Renders modals should render confirm delete modal 1`] = `
+<div
+  className="modal"
+  id="confirm-delete"
+>
+  <div
+    className="modal-content col-2"
+  >
+    <div
+      className="modal-heading"
+    >
+      <div
+        id="title"
+      >
+        <h4>
+          Are you sure you want to delete
+        </h4>
+      </div>
+    </div>
+    <div
+      className="modal-body"
+    >
+      <img
+        className="delete-icon"
+        src="/images/icons/delete.png"
+      />
+    </div>
+    <div
+      className="modal-footer"
+    >
+      <div>
+        <button
+          className="btn btn-primary dailog-ok"
+        >
+          Ok
+        </button>
+        <button
+          className="close btn btn-secondary"
+          data-target="confirm-delete"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders modals should render edit entry modal 1`] = `
+<div
+  className="modal"
+  id="edit-diary-entry"
+>
+  <div
+    className="modal-content col-2"
+  >
+    <img
+      className="loading_spinner_edit"
+      src="/images/icons/loading_spinner3.gif"
+    />
+    <div
+      className="modal-heading"
+    >
+      <div
+        id="title"
+      >
+        <h4>
+          Edit Entry
+        </h4>
+      </div>
+      <div
+        className="close close-btn"
+        data-target="edit-diary-entry"
+      >
+        X
+      </div>
+      <div
+        className="alert error-flash"
+      />
+    </div>
+    <div>
+      <form
+        encType="application/x-www-form-urlencoded"
+        id="edit-diary-entry-form"
+      >
+        <div
+          className="form-row"
+        >
+          <div
+            className="row"
+          >
+            <input
+              className="form-input"
+              id="diary-title"
+              name="title"
+              placeholder="Title..."
+              type="text"
+            />
+          </div>
+          <div
+            className="row"
+          >
+            <textarea
+              cols="30"
+              id="diary-body"
+              name="body"
+              rows="10"
+            />
+          </div>
+          <input
+            id="entry-id"
+            name="entry-id"
+            type="hidden"
+          />
+          <div>
+            <input
+              className="btn btn-primary"
+              id="btn-login"
+              type="submit"
+              value="Update Entry"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

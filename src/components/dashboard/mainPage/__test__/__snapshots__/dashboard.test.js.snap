@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders modals should render the list section of dashboard page 1`] = `
+<div
+  className="dashboard-section tab-pane selected container"
+  id="diary"
+>
+  <div
+    id="add-entry"
+  >
+    <button
+      className="btn btn-primary add-entry"
+      data-target="add-new-entry"
+    >
+      New Entry
+    </button>
+  </div>
+  <div
+    id="dairy-content"
+  >
+    <div
+      id="diary-heading"
+    >
+      <h4
+        id="title"
+      >
+        Diary Entry
+      </h4>
+      <h4
+        className="entry-head"
+        id="created-at"
+      >
+        Date Cretated
+      </h4>
+      <h4
+        className="entry-head"
+        id="action"
+      >
+        Action
+      </h4>
+    </div>
+    <ul
+      id="dairy-entries"
+    />
+  </div>
+  <div
+    className="pagination"
+  />
+  <input
+    id="entryCount"
+    type="hidden"
+  />
+</div>
+`;
+
+exports[`Renders modals should render the profile section of dashboard page 1`] = `
+<div
+  className="profile-section false tab-pane"
+  id="profile"
+>
+  <div
+    className="user-profile"
+  >
+    <div
+      className="profile-details"
+    >
+      <div>
+        <form
+          encType="application/x-www-htmlform-urlencoded"
+          id="update-profile"
+        >
+          <h4>
+            Profile Details
+          </h4>
+          <div
+            className="errors"
+            id="profile-error"
+          />
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="firstname"
+            >
+              First Name
+            </label>
+            <input
+              className="htmlform-input"
+              name="firstName"
+              type="text"
+            />
+          </div>
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="lastname"
+            >
+              Last Name
+            </label>
+            <input
+              className="htmlform-input"
+              name="lastName"
+              type="text"
+            />
+          </div>
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className="htmlform-input"
+              name="email"
+              type="email"
+            />
+          </div>
+          <div
+            className="item"
+          >
+            <label
+              htmlFor="location"
+            >
+              Location
+            </label>
+            <input
+              className="htmlform-input"
+              id="location"
+              name="location"
+              type="text"
+            />
+          </div>
+          <button
+            className="btn btn-primary change-password"
+            data-target="update-password"
+            type="button"
+          >
+            Change password
+          </button>
+          <button
+            className="btn btn-primary"
+            disabled={true}
+            id="save"
+            type="submit"
+          >
+            Save
+          </button>
+          <span
+            className="hide saving-settings-indicator"
+          >
+            Saving...
+          </span>
+        </form>
+      </div>
+      <div
+        id="total-entry-created"
+      >
+        <h4>
+          Activity
+        </h4>
+        <span
+          id="entries_created"
+        />
+        <div>
+          <p
+            className="joined date"
+          >
+            Joined 
+            <span
+              id="date-registered"
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Renders modals should render the settings section of dashboard page 1`] = `
+<div
+  className="dashboard-section tab-pane false"
+  id="settings"
+>
+  <div
+    className="setting-page row"
+  >
+    <ul>
+      <li>
+        <h4
+          id="setting-title"
+        >
+          Notifications
+        </h4>
+        <div
+          className="Notification-list"
+        >
+          <div
+            id="add-notification-item"
+          />
+          <div
+            className="Notification-item"
+          >
+            <p
+              className="title"
+            >
+              We will remind you to write your journal
+            </p>
+            <input
+              className="email-subscribe-update"
+              id="reminder-journal"
+              type="checkbox"
+            />
+            <span
+              className="hide saving-settings-indicator"
+            >
+              Saving...
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h4>
+          News Letter
+        </h4>
+        <div
+          id="news-letter"
+        >
+          <p
+            className="title"
+          >
+            Receive monthly news Letter
+          </p>
+          <input
+            className="email-subscribe-update"
+            id="receive-newsletter"
+            type="checkbox"
+          />
+          <span
+            className="hide saving-settings-indicator"
+          >
+            Saving...
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

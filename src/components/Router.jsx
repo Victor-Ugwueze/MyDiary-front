@@ -7,15 +7,16 @@ import { createBrowserHistory } from 'history';
 
 // components
 import LandingPage from '../containers/landing-page/landingPage';
+import DashBoard from './dashboard/Dashboard';
 import NotFound from './NotFound';
-
 
 const history = createBrowserHistory();
 
 const AppRouter = () => (
   <Router history={history}>
-    <Switch >
-      <Route exact path='/' component={LandingPage}/>
+    <Switch>
+      <Route exact path='/' component={LandingPage} />
+      <Route exact path='/dashboard' component={DashBoard} />
       <Route component={NotFound} />
     </Switch>
   </Router>

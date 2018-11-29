@@ -4,11 +4,10 @@ import initialState from '../../store/initialState';
 // action types
 import {
   LOGIN_SUCCESS,
-  LOGIN_LOADING,
+  LOGIN_REQUEST,
   LOGIN_FAILURE,
-  LOGIN_ERROR_CLEARED
-}
-  from '../../actions/actionTypes';
+  LOGIN_ERROR_CLEARED,
+} from '../../actions/actionTypes';
 
 /**
  * @param {object} state
@@ -18,27 +17,29 @@ import {
  */
 const loginReducer = (state = initialState.auth.login, action) => {
   switch (action.type) {
-    case LOGIN_LOADING:
+    case LOGIN_REQUEST:
       return {
         ...state,
-        processing: action.payload,
+        progress: action.payload.progress,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        processing: false,
-        error: ''
+        progress: action.payload.progress,
+        isAuth: true,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        processing: false,
-        error: action.payload
+        progress: 'done',
+        error: true,
+        message: action.payload.message,
       };
     case LOGIN_ERROR_CLEARED:
       return {
         ...state,
-        error: ''
+        message: action.payload.message,
+        progress: false,
       };
     default:
       return state;
