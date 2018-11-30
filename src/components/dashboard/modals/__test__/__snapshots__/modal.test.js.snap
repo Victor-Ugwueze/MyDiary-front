@@ -20,7 +20,7 @@ exports[`Renders modals should render add entry modal 1`] = `
       </div>
       <div
         className="close close-btn"
-        data-target="add-new-entry"
+        data-target="newEntry"
       >
         X
       </div>

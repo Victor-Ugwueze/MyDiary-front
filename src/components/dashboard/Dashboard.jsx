@@ -34,6 +34,7 @@ class Dashboard extends Component {
     settings: false,
     profile: false,
     newEntry: false,
+    showEntry: false,
   };
 
   changePageSection = (event) => {
@@ -93,9 +94,9 @@ class Dashboard extends Component {
     });
   };
 
-  closeModal = () => {
+  closeModal = (event) => {
     this.setState({
-      newEntry: false,
+      [event.target.dataset.target]: false
     });
   };
 
@@ -116,10 +117,18 @@ class Dashboard extends Component {
     }
   };
 
+  showEntry = (event) => {
+    const { id } = event.target.dataset;
+    this.setState({
+      showEntry: true,
+    });
+    this.props.getSingleEntry(id);
+  };
+
   render = () => {
     const { user } = this.props.auth;
     const { entries } = this.props.entries;
-    const formatedEntries = formatEntry(entries);
+    const formatedEntries = formatEntry(entries, this.showEntry);
     return (
       <Fragment>
         <Header onClick={this.openSideBar} user={user.user} />
@@ -141,6 +150,7 @@ class Dashboard extends Component {
               <ListEntrySection
                 entries={formatedEntries}
                 current={this.state.diary}
+                showEntry={this.showEntry}
                 openNewEntryModal={this.showNewEntryModal}
               />
               <ProfileSection current={this.state.profile} />
@@ -156,7 +166,11 @@ class Dashboard extends Component {
             onSubmit={this.addNewEntry}
           />
           <EditEnrtMoal />
-          <ViewSingleArticleModal />
+          <ViewSingleArticleModal
+            isOpen={this.state.showEntry}
+            entry={this.props.entry}
+            close={this.closeModal}
+          />
           <ChangePasswordModal />
         </section>
       </Fragment>
@@ -170,6 +184,8 @@ Dashboard.propTypes = {
   getListEntries: PropTypes.func,
   entries: PropTypes.object,
   addEntry: PropTypes.func,
+  getSingleEntry: PropTypes.func,
+  entry: PropTypes.object,
 };
 
 export default Dashboard;

@@ -5,8 +5,9 @@ import { combineReducers } from 'redux';
 import sample from './sample';
 import signup from './auth/signup';
 import auth from './auth/auth';
-import createEntry from './entry/singleEntry';
+import createEntry from './entry/addEntry';
 import entries from './entry/getListEntry';
+import getSingleEntry from './entry/getSingleEntry';
 /**
  * @desc combines all the reducers
 */
@@ -16,4 +17,5 @@ export default combineReducers({
   auth,
   createEntry,
   entries,
+  getSingleEntry,
 });

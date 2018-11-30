@@ -44,7 +44,6 @@ export function createEntryFailure(message) {
 
 export const createEntry = ({ title, body }) => (dispatch) => {
   const url = process.env.SERVER_URL || '';
-  console.log('hrerererre', title);
   const token = localStorage.getItem('token');
   const headers = {
     'Content-Type': 'application/json;charset=UTF-8',

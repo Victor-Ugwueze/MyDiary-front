@@ -1,23 +1,24 @@
 // actionType
 import {
-  CREATE_ENTRY,
-  CREATE_ENTRY_SUCCESS,
-  CREATE_ENTRY_FAILURE,
+  GET_SINGLE_ENTRY,
+  GET_LIST_ENTRIES_SUCCESS,
+  GET_SINGLE_ENTRY_FAILURE,
+  GET_SINGLE_ENTRY_SUCCESS,
 } from '../../../actions/actionTypes';
 
 // reducer
-import reducer from '../addEntry';
+import reducer from '../getSingleEntry';
 
 const message = 'Password required.';
 
 describe('login reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual({});
+    expect(reducer(undefined, {})).toEqual({ entry: {} });
   });
-  it('should run making create entry', () => {
+  it('should run making get entry request', () => {
     expect(
       reducer([], {
-        type: CREATE_ENTRY,
+        type: GET_SINGLE_ENTRY,
         payload: {
           progress: 'ongoing',
         },
@@ -26,10 +27,10 @@ describe('login reducer', () => {
       progress: 'ongoing',
     });
   });
-  it('should run on successful login', () => {
+  it('should run on get entry success', () => {
     expect(
       reducer([], {
-        type: CREATE_ENTRY_SUCCESS,
+        type: GET_SINGLE_ENTRY_SUCCESS,
         payload: {
           progress: 'done',
           entry: {
@@ -41,7 +42,7 @@ describe('login reducer', () => {
       })
     ).toEqual({
       progress: 'done',
-      createdEntry: {
+      entry: {
         id: 1,
         title: 'the title',
         body: 'the body',
@@ -51,7 +52,7 @@ describe('login reducer', () => {
   it('should run on create entry failure', () => {
     expect(
       reducer([], {
-        type: CREATE_ENTRY_FAILURE,
+        type: GET_SINGLE_ENTRY_FAILURE,
         payload: {
           message,
         },
