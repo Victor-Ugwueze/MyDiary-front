@@ -4,7 +4,7 @@ import React from 'react';
 // third-party libraries
 import PropTypes from 'prop-types';
 
-const ListEntrySection = ({ current, openNewEntryModal }) => (
+const ListEntrySection = ({ current, openNewEntryModal, entries }) => (
   <div id='diary' className={`dashboard-section tab-pane ${current && 'selected'} container`}>
     <div id='add-entry'>
       <button className='btn btn-primary add-entry' data-target='add-new-entry' onClick={openNewEntryModal}>
@@ -21,7 +21,9 @@ const ListEntrySection = ({ current, openNewEntryModal }) => (
           Action
         </h4>
       </div>
-      <ul id='dairy-entries' />
+      <ul id='dairy-entries' >
+          {entries}
+       </ul>
     </div>
     <div className='pagination' />
     <input type='hidden' id='entryCount' />
@@ -31,6 +33,7 @@ const ListEntrySection = ({ current, openNewEntryModal }) => (
 ListEntrySection.propTypes = {
   current: PropTypes.bool,
   openNewEntryModal: PropTypes.func,
+  entries: PropTypes.array,
 };
 
 export default ListEntrySection;

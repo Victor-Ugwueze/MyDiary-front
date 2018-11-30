@@ -8,7 +8,12 @@ import MockAdapter from 'axios-mock-adapter';
 
 // actionType
 // actionType
-import { CREATE_ENTRY, CREATE_ENTRY_SUCCESS, CREATE_ENTRY_FAILURE } from '../../actionTypes';
+import {
+  CREATE_ENTRY,
+  CREATE_ENTRY_SUCCESS,
+  CREATE_ENTRY_FAILURE,
+  GET_LIST_ENTRIES,
+} from '../../actionTypes';
 
 // action
 import { createEntry } from '../singleEntry';
@@ -41,6 +46,12 @@ describe('Actions related with creating entry', () => {
         payload: {
           progress: 'done',
           entry,
+        },
+      },
+      {
+        type: GET_LIST_ENTRIES,
+        payload: {
+          progress: 'ongoing',
         },
       },
     ];

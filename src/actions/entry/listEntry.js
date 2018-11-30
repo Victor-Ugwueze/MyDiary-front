@@ -3,37 +3,46 @@ import http from 'axios';
 
 // actionType
 import {
-  CREATE_ENTRY,
-  CREATE_ENTRY_SUCCESS,
-  CREATE_ENTRY_FAILURE,
+  GET_LIST_ENTRIES,
+  GET_LIST_ENTRIES_FAILURE,
+  GET_LIST_ENTRIES_SUCCESS,
+  CLEAR_PROGRESS,
 } from '../actionTypes';
-
-// action
-import { getListEntries } from './listEntry';
 
 /**
  * @desc create new entry success
- * @param {object} data
+ * @param {array} entries
  * @returns {object} type
  */
-export function createEntrysuccess(data) {
+export function getListEntriesSuccess(entries) {
   return {
-    type: CREATE_ENTRY_SUCCESS,
+    type: GET_LIST_ENTRIES_SUCCESS,
     payload: {
       progress: 'done',
-      entry: data.createdEntry,
+      entries,
     },
   };
 }
+
+/**
+ * @desc clears progress status
+ * @returns {object} type
+ */
+const clearProgress = () => ({
+  type: CLEAR_PROGRESS,
+  payload: {
+    progress: false,
+  },
+});
 
 /**
  * @param {object} message
  * @desc checking unsuccessful login
  * @returns {object} type
  */
-export function createEntryFailure(message) {
+export function getListEntriesFailure(message) {
   return {
-    type: CREATE_ENTRY_FAILURE,
+    type: GET_LIST_ENTRIES_FAILURE,
     payload: {
       progress: 'done',
       message,
@@ -41,38 +50,28 @@ export function createEntryFailure(message) {
   };
 }
 
-
-export const createEntry = ({ title, body }) => (dispatch) => {
+export const getListEntries = () => (dispatch) => {
   const url = process.env.SERVER_URL || '';
-  console.log('hrerererre', title);
   const token = localStorage.getItem('token');
   const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
     'x-access-token': `${token}`,
   };
   dispatch({
-    type: CREATE_ENTRY,
+    type: GET_LIST_ENTRIES,
     payload: {
       progress: 'ongoing',
     },
   });
   return http
-    .post(
-      `${url}/api/v1/entries`,
-      {
-        token,
-        title,
-        body,
-      },
-      {
-        headers,
-      }
-    )
+    .get(`${url}/api/v1/entries`, {
+      headers,
+    })
     .then((response) => {
-      dispatch(createEntrysuccess(response.data));
-      dispatch(getListEntries());
+      dispatch(getListEntriesSuccess(response.data.entries));
+      dispatch(clearProgress());
     })
     .catch(({ response }) => {
-      dispatch(createEntryFailure(response.data.message));
+      dispatch(getListEntriesFailure(response.data.message));
     });
 };
