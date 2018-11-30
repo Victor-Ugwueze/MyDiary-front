@@ -22,7 +22,7 @@ module.exports = merge(common, {
         'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
       },
     }),
-    UglifyJsPlugin(),
+    new UglifyJsPlugin(),
     new CopyWebpackPlugin([
       { from: 'public/images', to: 'images' }
     ]),

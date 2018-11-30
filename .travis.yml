@@ -4,3 +4,13 @@ node_js:
 cache:
   directories:
   - node_modules
+deploy:
+  provider: heroku
+  app: my-diary-staging-frontend
+  api_key:
+    secure: KYuEXHmxp/saCqB+c6rBj3NT91izsQvruCEDSY98K1DOhSJ9YxXmDm09cwd/yUf4ovRvOkw3LJHEfmZCPvQgjgGlWcP/gtqmcrLAgUv1/e5ExrU7tlYjBIq7jrD/jmUwKu4uDVQW5XEgddeGszmnsaA/e78PHTvkMFo0XaUulLAOsUrveHMXo0qw32y3dFWXv/aCWQdqZpjbV0sVp5xOkUr+1+9S94rJuNm4vQtgUTLfe/0L8BKp6RtfsSLrS3q+u0xUX+PuYK2uEektdc7QWof1dLo0RJ29zt5hIPZ+NEtvrS1WLYH1sJ80xrQ3xL88RwCHHBQUB1V5uhsBKuCmrr8WHPtXmuSPD5PrKVPMe2eEFcjA5N09YCBhsVHhv3NfKCz9jen3XqReVbSHuRtqOm/T6K/fwCs/RDH6cL40iBDGD3wAYBefoz0Iy2rzrPK3pPQhROhIPDBV3IdRSALFbBNR46TETTsE15OhKz6V06W6lNiYDeBKxEDrGlOtygWiaqrSA6aKls5MPNVR8jQ3CmbqFYnTmb22eJUjT0MvuZjJYtXyADtsTlmsYrhRMm/l+aR+ouPMXtyYdZr68okYnNsfPZA1KDxy4+DVZR7kP4H2X+tk3LMdNURncqTBj9Lpp3IiLsbSxyTZYnenLP/WlettvwIRfBeOG07WdbHxhsQ=
+  on:
+    repo: Victor-Ugwueze/MyDiary-front
+    branch: develop
+  run:
+    - webpack -p
