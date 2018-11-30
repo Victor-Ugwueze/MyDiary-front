@@ -22,7 +22,7 @@ const HeaderHome = props => (
                             </a>
                         </li>
                         <li className="nav-link">
-                            <a href="#"
+                            <a
                                 onClick={props.openModal}
                                 data-target="sign-up-login"
                                 data-toggle="login"

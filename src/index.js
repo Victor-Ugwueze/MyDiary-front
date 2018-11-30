@@ -9,13 +9,26 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 
 // action
-import { sampleAction } from './actions/sample';
+import { authenticate, logout } from './actions/auth/auth';
+
 // compoents
 import App from './components/Router';
+
+// helpers
+import authHelper from './helpers/auth';
+
+// styles
 import './styles/index.scss';
 
 const store = configureStore();
-store.dispatch(sampleAction());
+const token = localStorage.getItem('token');
+const checker = authHelper.validateToken(token);
+if (checker) {
+  const user = localStorage.getItem('user');
+  store.dispatch(authenticate(JSON.parse(user), token));
+} else {
+  store.dispatch(logout());
+}
 
 ReactDOM.render(
   <Provider store={store}>

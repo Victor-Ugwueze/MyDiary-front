@@ -19,7 +19,7 @@ describe('Renders modals', () => {
     const showSideBar = () => { };
 
     const component = shallow(
-      <Header onClick={showSideBar}/>
+      <Header onClick={showSideBar} user={{ firstName: 'victor' }}/>
     );
     expect(component).toMatchSnapshot();
   });

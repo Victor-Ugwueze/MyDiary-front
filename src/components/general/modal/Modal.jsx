@@ -16,5 +16,5 @@ export default Modal;
 
 Modal.propTypes = {
   isModalOpen: PropTypes.bool,
-  children: PropTypes.object,
+  children: PropTypes.array,
 };

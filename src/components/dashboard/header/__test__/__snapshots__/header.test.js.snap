@@ -50,7 +50,9 @@ exports[`Renders modals should render the header component 1`] = `
               />
               <span
                 id="menu-firstname"
-              />
+              >
+                victor
+              </span>
             </div>
           </div>
         </li>
