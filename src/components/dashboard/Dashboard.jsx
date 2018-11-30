@@ -4,6 +4,9 @@ import React, { Fragment, Component } from 'react';
 // third-party libraries
 import PropTypes from 'prop-types';
 
+// helpers
+import validator from '../../helpers/validator';
+
 // components
 import Header from './header/Header';
 import SideBar from './sidebar/SideBard';
@@ -86,12 +89,29 @@ class Dashboard extends Component {
     });
   };
 
+  addNewEntry = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const title = data.get('title');
+    const body = data.get('title');
+    const errors = validator.validate(
+      {
+        title,
+        body,
+      },
+      ['entry']
+    );
+    if (errors.length > 0) {
+      this.props.addEntry({ title, body });
+    }
+  };
+
   render = () => {
     const { user } = this.props.auth;
     console.log(user);
     return (
       <Fragment>
-        <Header onClick={this.openSideBar} user={user.user}/>
+        <Header onClick={this.openSideBar} user={user.user} />
         <main id='wrap' className='container-fluid'>
           <SideBar
             isSidebarOpen={this.state.isSidebarOpen || window.innerWidth > 890}
@@ -118,7 +138,11 @@ class Dashboard extends Component {
           </div>
         </main>
         <section>
-          <NewEntryModal isOpen={this.state.newEntry} close={this.closeModal} />
+          <NewEntryModal
+            isOpen={this.state.newEntry}
+            close={this.closeModal}
+            onSubmit={this.addNewEntry}
+          />
           <EditEnrtMoal />
           <ViewSingleArticleModal />
           <ChangePasswordModal />

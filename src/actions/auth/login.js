@@ -10,11 +10,10 @@ import {
 import { authenticate } from './auth';
 
 /**
- * @param {object} data
  * @desc checking login loading
  * @returns {object} type
  */
-export function loginLoading(data) {
+export function loginLoading() {
   return {
     type: LOGIN_REQUEST,
     payload: {
@@ -39,7 +38,7 @@ export function success() {
  * @desc checking unsuccessful login
  * @returns {object} type
  */
-export function failure(data) {
+export function failure() {
   return {
     type: LOGIN_FAILURE,
     payload: {
@@ -59,7 +58,7 @@ export function clearError() {
 }
 
 export const loginAction = userData => (dispatch) => {
-  dispatch(loginLoading(true));
+  dispatch(loginLoading());
   const url = process.env.SERVER_URL || '';
   return http
     .post(`${url}/auth/login`, userData)
