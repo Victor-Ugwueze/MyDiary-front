@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // helpers
 import validator from '../../helpers/validator';
+import formatEntry from '../../helpers/entry/entry';
 
 // components
 import Header from './header/Header';
@@ -48,6 +49,19 @@ class Dashboard extends Component {
 
   componentDidMount = () => {
     window.addEventListener('resize', this.updateWindowDimensions);
+    this.props.getListEntries();
+  };
+
+  /**
+   *@param {object} prevProps
+   * @memberof Dashboard
+   */
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.entries.progress === 'done') {
+      this.setState({
+        newEntry: false,
+      });
+    }
   };
 
   componentWillUnmount = () => {
@@ -73,10 +87,6 @@ class Dashboard extends Component {
     });
   };
 
-  componentDidMount() {
-    this.setState({ height: `${window.innerHeight}px` });
-  }
-
   showNewEntryModal = () => {
     this.setState({
       newEntry: true,
@@ -101,14 +111,15 @@ class Dashboard extends Component {
       },
       ['entry']
     );
-    if (errors.length > 0) {
+    if (!errors.length > 0) {
       this.props.addEntry({ title, body });
     }
   };
 
   render = () => {
     const { user } = this.props.auth;
-    console.log(user);
+    const { entries } = this.props.entries;
+    const formatedEntries = formatEntry(entries);
     return (
       <Fragment>
         <Header onClick={this.openSideBar} user={user.user} />
@@ -128,6 +139,7 @@ class Dashboard extends Component {
               <div className='alert error-flash' />
               <div className='alert success-flash' />
               <ListEntrySection
+                entries={formatedEntries}
                 current={this.state.diary}
                 openNewEntryModal={this.showNewEntryModal}
               />
@@ -155,6 +167,9 @@ class Dashboard extends Component {
 Dashboard.propTypes = {
   height: PropTypes.string,
   auth: PropTypes.auth,
+  getListEntries: PropTypes.func,
+  entries: PropTypes.object,
+  addEntry: PropTypes.func,
 };
 
 export default Dashboard;

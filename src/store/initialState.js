@@ -15,7 +15,9 @@ const initialState = {
     user: {},
     isAuth: false,
   },
-  entries: [],
+  listEntries: {
+    entries: [],
+  },
   createdEntry: {}
 };
 
