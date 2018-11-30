@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 
 // helpers
 import validator from '../../helpers/validator';
-import formatEntry from '../../helpers/entry/entry';
+import getEntryItems from '../../helpers/entry/entry';
 
 // components
 import Header from './header/Header';
 import SideBar from './sidebar/SideBard';
 import NewEntryModal from './modals/NewEntry';
-import EditEnrtMoal from './modals/EditEntry';
+import EditEnrtyModal from './modals/EditEntry';
 import ViewSingleArticleModal from './modals/ViewSingleArticle';
 import ChangePasswordModal from './modals/ChangePassword';
 import ListEntrySection from './mainPage/ListEntry';
@@ -35,6 +35,7 @@ class Dashboard extends Component {
     profile: false,
     newEntry: false,
     showEntry: false,
+    updateEntry: false,
   };
 
   changePageSection = (event) => {
@@ -100,8 +101,7 @@ class Dashboard extends Component {
     });
   };
 
-  addNewEntry = (event) => {
-    event.preventDefault();
+  validateEntry = (event) => {
     const data = new FormData(event.target);
     const title = data.get('title');
     const body = data.get('title');
@@ -113,7 +113,19 @@ class Dashboard extends Component {
       ['entry']
     );
     if (!errors.length > 0) {
-      this.props.addEntry({ title, body });
+      return {
+        title,
+        body,
+      };
+    }
+    return false;
+  };
+
+  addNewEntry = (event) => {
+    event.preventDefault();
+    const entry = this.validateEntry(event);
+    if (event) {
+      this.props.addEntry(entry);
     }
   };
 
@@ -128,7 +140,7 @@ class Dashboard extends Component {
   render = () => {
     const { user } = this.props.auth;
     const { entries } = this.props.entries;
-    const formatedEntries = formatEntry(entries, this.showEntry);
+    const formatedEntries = getEntryItems(entries, this.updateEntry, this.deleteEntry);
     return (
       <Fragment>
         <Header onClick={this.openSideBar} user={user.user} />
@@ -165,17 +177,17 @@ class Dashboard extends Component {
             close={this.closeModal}
             onSubmit={this.addNewEntry}
           />
-          <EditEnrtMoal />
           <ViewSingleArticleModal
             isOpen={this.state.showEntry}
             entry={this.props.entry}
             close={this.closeModal}
           />
+          <EditEnrtyModal isOpen={this.state.updateEntry}/>
           <ChangePasswordModal />
         </section>
       </Fragment>
     );
-  };
+  }
 }
 
 Dashboard.propTypes = {

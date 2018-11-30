@@ -1,8 +1,8 @@
 // react libraries
 import React from 'react';
 
-const EditEntryModal = () => (
-  <div className='modal' id='edit-diary-entry'>
+const EditEntryModal = ({ isOpen }) => (
+  <div className={`modal ${isOpen && 'show'}`} id='edit-diary-entry'>
     <div className='modal-content col-2'>
       <img src='/images/icons/loading_spinner3.gif' className='loading_spinner_edit' />
       <div className='modal-heading'>
