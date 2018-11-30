@@ -15,6 +15,8 @@ const initialState = {
     user: {},
     isAuth: false,
   },
+  entries: [],
+  createdEntry: {}
 };
 
 export default initialState;

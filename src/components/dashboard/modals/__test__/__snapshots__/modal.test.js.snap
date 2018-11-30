@@ -29,7 +29,6 @@ exports[`Renders modals should render add entry modal 1`] = `
       />
     </div>
     <form
-      encType="application/x-www-form-urlencoded"
       id="add-entry-form"
     >
       <div

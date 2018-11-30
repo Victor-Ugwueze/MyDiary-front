@@ -70,12 +70,24 @@ const validator = {
     if (firsname.length < 2) {
       const error = 'firsname must should be more than five characters';
       validator.errors.push({ message: error });
-    } if (lastname.length < 2) {
+    }
+    if (lastname.length < 2) {
       const error = 'lastname must be should be more than two characters';
       validator.errors.push({ message: error });
     }
   },
 
+  entry: () => {
+    const title = validator.trimSpaces('title');
+    const body = validator.trimSpaces('body');
+
+    if (title.length < 15) {
+      validator.errors.push({ message: "title can't be less than 15 characters" });
+    }
+    if (body === '') {
+      validator.errors.push({ message: 'body cannot be empty' });
+    }
+  },
 };
 
 export default validator;

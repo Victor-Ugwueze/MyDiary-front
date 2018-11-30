@@ -20,7 +20,7 @@ class NewEntryModal extends Component {
           </div>
           <div className='alert error-flash' />
         </div>
-        <form encType='application/x-www-form-urlencoded' id='add-entry-form'>
+        <form id='add-entry-form' onSubmit={this.props.onSubmit}>
           <div className='form-row'>
             <div className='row'>
               <input

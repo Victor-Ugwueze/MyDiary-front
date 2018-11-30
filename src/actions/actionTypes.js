@@ -13,10 +13,6 @@ export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
 export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
 
-// verify email action types
-export const VERIFY_EMAIL = 'VERIFY_EMAIL';
-export const VERIFY_EMAIL_SUCCESS = 'VERIFY_EMAIL_SUCCESS';
-export const VERIFY_EMAIL_FAILURE = 'VERIFY_EMAIL_FAILURE';
 
 // update user action types
 export const UPDATE_USER = 'UPDATE_USER';
@@ -26,3 +22,9 @@ export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 // auth action types
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+
+// entry action type
+export const CREATE_ENTRY = 'CREATE_ENTRY';
+export const CREATE_ENTRY_SUCCESS = 'CREATE_ENTRY_SUCCESS';
+export const CREATE_ENTRY_FAILURE = 'CREATE_ENTRY_FAILURE';
+export const CLEAR_PROGRESS = 'CLEAR_PROGRESS';
