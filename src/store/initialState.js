@@ -18,7 +18,10 @@ const initialState = {
   listEntries: {
     entries: [],
   },
-  createdEntry: {}
+  createdEntry: {},
+  getSingleEntry: {
+    entry: {}
+  },
 };
 
 export default initialState;

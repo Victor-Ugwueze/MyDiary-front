@@ -15,7 +15,7 @@ class NewEntryModal extends Component {
           <div id='title'>
             <h4>Add Entry</h4>
           </div>
-          <div className='close close-btn' data-target='add-new-entry' onClick={this.props.close}>
+          <div className='close close-btn' data-target='newEntry' onClick={this.props.close}>
             X
           </div>
           <div className='alert error-flash' />
@@ -51,7 +51,9 @@ class NewEntryModal extends Component {
 
 NewEntryModal.propTypes = {
   current: PropTypes.bool,
-  openNewEntryModal: PropTypes.func,
+  isOpen: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  close: PropTypes.func,
 };
 
 export default NewEntryModal;
