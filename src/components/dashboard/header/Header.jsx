@@ -4,7 +4,7 @@ import React from 'react';
 // third-party libraries
 import PropTypes from 'prop-types';
 
-const Header = ({ onClick }) => (
+const Header = ({ onClick, user }) => (
   <header className="dashboard-header">
       <img className="loading-indicator" src="/images/loading_spinner.gif" />
     <span className="icon-bar menu-icon" onClick={onClick}></span>
@@ -22,7 +22,7 @@ const Header = ({ onClick }) => (
                   <div className="dropdown">
                     <div className="user-img">
                         <img className="profile-img" src="/images/avatar.png" alt="" />
-                        <span id="menu-firstname"></span>
+                        <span id="menu-firstname">{user.firstName}</span>
                     </div>
                   </div>
               </li>
@@ -33,7 +33,8 @@ const Header = ({ onClick }) => (
 );
 
 Header.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  user: PropTypes.object
 };
 
 export default Header;

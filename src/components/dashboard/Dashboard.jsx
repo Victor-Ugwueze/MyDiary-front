@@ -76,56 +76,61 @@ class Dashboard extends Component {
 
   showNewEntryModal = () => {
     this.setState({
-      newEntry: true
+      newEntry: true,
     });
-  }
+  };
 
   closeModal = () => {
     this.setState({
-      newEntry: false
+      newEntry: false,
     });
-  }
+  };
 
-  render = () => (
-    <Fragment>
-      <Header onClick={this.openSideBar} />
-      <main id='wrap' className='container-fluid'>
-        <SideBar
-          isSidebarOpen={this.state.isSidebarOpen || window.innerWidth > 890}
-          onClick={this.changePageSection}
-          currentView={{
-            diary: this.state.diary,
-            settings: this.state.settings,
-            profile: this.state.profile,
-          }}
-          openNewEntryModal={this.showNewEntryModal}
+  render = () => {
+    const { user } = this.props.auth;
+    console.log(user);
+    return (
+      <Fragment>
+        <Header onClick={this.openSideBar} user={user.user}/>
+        <main id='wrap' className='container-fluid'>
+          <SideBar
+            isSidebarOpen={this.state.isSidebarOpen || window.innerWidth > 890}
+            onClick={this.changePageSection}
+            currentView={{
+              diary: this.state.diary,
+              settings: this.state.settings,
+              profile: this.state.profile,
+            }}
+            openNewEntryModal={this.showNewEntryModal}
           />
-        <div id='right-section'>
-          <section id='main-section'>
-            <div className='alert error-flash' />
-            <div className='alert success-flash' />
-            <ListEntrySection
-              current={this.state.diary}
-              openNewEntryModal={this.showNewEntryModal}
+          <div id='right-section'>
+            <section id='main-section'>
+              <div className='alert error-flash' />
+              <div className='alert success-flash' />
+              <ListEntrySection
+                current={this.state.diary}
+                openNewEntryModal={this.showNewEntryModal}
               />
-            <ProfileSection current={this.state.profile}/>
-            <SettingsSection current={this.state.settings}/>
-            <img src='/images/loading_spinner.gif' className='loading_spinner' />
-          </section>
-        </div>
-      </main>
-      <section>
-        <NewEntryModal isOpen={this.state.newEntry} close={this.closeModal}/>
-        <EditEnrtMoal />
-        <ViewSingleArticleModal />
-        <ChangePasswordModal />
-      </section>
-    </Fragment>
-  );
+              <ProfileSection current={this.state.profile} />
+              <SettingsSection current={this.state.settings} />
+              <img src='/images/loading_spinner.gif' className='loading_spinner' />
+            </section>
+          </div>
+        </main>
+        <section>
+          <NewEntryModal isOpen={this.state.newEntry} close={this.closeModal} />
+          <EditEnrtMoal />
+          <ViewSingleArticleModal />
+          <ChangePasswordModal />
+        </section>
+      </Fragment>
+    );
+  };
 }
 
 Dashboard.propTypes = {
   height: PropTypes.string,
+  auth: PropTypes.auth,
 };
 
 export default Dashboard;

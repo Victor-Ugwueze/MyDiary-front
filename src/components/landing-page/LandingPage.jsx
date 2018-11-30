@@ -16,7 +16,6 @@ import HeroSection from './HeroSection';
 import Footer from '../general/footer/Footer';
 import Modal from '../general/modal/Modal';
 
-
 /**
  * @class LandingPage
  * @desc renders Landing
@@ -31,8 +30,8 @@ class LandingPage extends Component {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
-  }
+    confirmPassword: '',
+  };
 
   openModal = (event) => {
     let hide = 'signup';
@@ -40,19 +39,19 @@ class LandingPage extends Component {
     this.setState({
       [event.target.dataset.toggle]: true,
       [hide]: false,
-      isModalOpen: true
+      isModalOpen: true,
     });
-  }
+  };
 
   toggleForm = (event) => {
     this.openModal(event);
-  }
+  };
 
   /**
-  * @param {object} input
-  * @memberof LandingPage
-  * @return {object} data
-  */
+   * @param {object} input
+   * @memberof LandingPage
+   * @return {object} data
+   */
   getFormInput = (input) => {
     const formInput = new FormData(input);
     const data = {
@@ -69,47 +68,39 @@ class LandingPage extends Component {
 
   signup = (event) => {
     event.preventDefault();
-    const errors = validator.validate(this.state, [
-      'email',
-      'password',
-      'name',
-      'confirmPassword',
-    ]);
-    console.log(errors);
+    const errors = validator.validate(this.state, ['email', 'password', 'name', 'confirmPassword']);
     if (!errors.length > 0) {
       this.props.register(this.state);
     }
-  }
+  };
 
   login = (event) => {
     event.preventDefault();
     const data = this.getFormInput(event.target);
-    const errors = validator.validate(this.state, [
-      'email',
-    ]);
-    console.log(errors);
+    const errors = validator.validate(this.state, ['email']);
     if (!errors.length > 0) {
       this.props.doLogin(data);
     }
-  }
+  };
 
   onChange = (event) => {
-    console.log(event.target.value);
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
   render = () => {
     const { auth } = this.props;
     if (auth.isAuth) {
-      return <Redirect
-        to={{
-          pathname: '/dashboard',
-          user: auth.user,
-          isAuth: auth.isAuth,
-        }}
-      />;
+      return (
+        <Redirect
+          to={{
+            pathname: '/dashboard',
+            user: auth.user,
+            isAuth: auth.isAuth,
+          }}
+        />
+      );
     }
     return (
       <Fragment>
@@ -117,41 +108,38 @@ class LandingPage extends Component {
         <HeroSection />
         <section>
           <Modal isModalOpen={this.state.isModalOpen}>
-            <div className="nav-tabs" role="tablist">
-              <a className={`nav-item ${this.state.login && 'active'}`}
-                data-toggle="login"
-                id="select-tab-login"
-                role="tab"
+            <div className='nav-tabs' role='tablist'>
+              <a
+                className={`nav-item ${this.state.login && 'active'}`}
+                data-toggle='login'
+                id='select-tab-login'
+                role='tab'
                 onClick={this.toggleForm}>
                 Login
               </a>
               <a
                 className={`nav-item ${this.state.signup && 'active'}`}
-                data-toggle="signup"
-                id="select-tab-signup"
-                role="tab"
-                onClick={this.toggleForm}
-              >
+                data-toggle='signup'
+                id='select-tab-signup'
+                role='tab'
+                onClick={this.toggleForm}>
                 Sign Up
               </a>
             </div>
-            <div className="tab-conten row">
-              <LoginForm
-              onChange={this.onChange}
-              show={this.state.login}
-              onSubmit={this.login} />
+            <div className='tab-conten row'>
+              <LoginForm onChange={this.onChange} show={this.state.login} onSubmit={this.login} />
               <SignupForm
                 onChange={this.onChange}
                 onSubmit={this.signup}
                 show={this.state.signup}
               />
             </div>
-            </Modal>
-          </section>
+          </Modal>
+        </section>
         <Footer />
       </Fragment>
     );
-  }
+  };
 }
 
 LandingPage.propTypes = {

@@ -3,6 +3,7 @@ import React from 'react';
 
 // third-party libraries
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const SideBar = ({
   isSidebarOpen, onClick, currentView, openNewEntryModal
@@ -62,7 +63,9 @@ const SideBar = ({
         <div className='icon'>
           <img src='/images/icons/logout.png' />
         </div>
-        <div>Log out</div>
+        <div>
+          <Link to="/logout" >Log out</Link>
+        </div>
       </div>
     </ul>
   </div>
