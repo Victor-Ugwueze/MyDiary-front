@@ -22,6 +22,9 @@ const initialState = {
   getSingleEntry: {
     entry: {}
   },
+  updateEntry: {
+    entry: {}
+  },
 };
 
 export default initialState;

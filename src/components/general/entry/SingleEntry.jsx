@@ -18,9 +18,9 @@ const EntryItem = ({ entry, showEntry, updateEntry }) => (
             src='/images/edit.png'
             onClick={updateEntry}
             data-id={entry.id}
-            data-update="show"
+            data-mode="edit"
           />
-          <span className='edit-text' onClick={updateEntry} data-id={entry.id} data-update="show">
+          <span className='edit-text' onClick={updateEntry} data-id={entry.id} data-mode="edit">
             Edit
           </span>
         </span>
@@ -42,6 +42,7 @@ const EntryItem = ({ entry, showEntry, updateEntry }) => (
 EntryItem.propTypes = {
   entry: PropTypes.object,
   showEntry: PropTypes.func,
+  updateEntry: PropTypes.func,
 };
 
 export default EntryItem;

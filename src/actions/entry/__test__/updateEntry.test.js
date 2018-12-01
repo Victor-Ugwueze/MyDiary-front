@@ -9,72 +9,72 @@ import MockAdapter from 'axios-mock-adapter';
 // actionType
 // actionType
 import {
-  GET_SINGLE_ENTRY,
-  GET_SINGLE_ENTRY_FAILURE,
-  GET_SINGLE_ENTRY_SUCCESS,
-  CLEAR_PROGRESS
+  UPDATE_ENTRY,
+  UPDATE_ENTRY_SUCCESS,
+  GET_LIST_ENTRIES,
+  UPDATE_ENTRY_FAILURE,
 } from '../../actionTypes';
 
 // action
-import { getSingleEntry } from '../getSingleEntry';
+import { updateEntry } from '../updateEntry';
 
 // dotenv.config();
-const entry = { id: 1, title: 'the title' };
+const entry = { id: 1, title: 'the title', body: 'body' };
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const mock = new MockAdapter(axios);
 
-describe('Actions related with get single entry', () => {
+describe('Actions related with updating single entry', () => {
   const entryId = 1;
   afterEach(() => {
     mock.reset();
   });
-  it('User get single entry is successfully', () => {
-    mock.onGet(`/api/v1/entries/${entryId}`).reply(200, {
+  it('User update single entry is successfully', () => {
+    mock.onPut(`/api/v1/entries/${entryId}`).reply(200, {
       entry,
       progress: 'ongoing',
     });
 
     const mockedActions = [
       {
-        type: GET_SINGLE_ENTRY,
+        type: UPDATE_ENTRY,
         payload: {
           progress: 'ongoing',
         },
       },
       {
-        type: GET_SINGLE_ENTRY_SUCCESS,
+        type: UPDATE_ENTRY_SUCCESS,
         payload: {
           progress: 'done',
         },
       },
       {
-        type: CLEAR_PROGRESS,
+        type: GET_LIST_ENTRIES,
         payload: {
-          progress: false,
+          progress: 'ongoing',
         },
       },
     ];
 
     const store = mockStore({ getSingleEntry: {} });
-    return store.dispatch(getSingleEntry(1)).then(() => {
+    return store.dispatch(updateEntry(entry, entryId)).then(() => {
       expect(store.getActions()).toEqual(mockedActions);
     });
   });
-  it('create enrty is failed', () => {
-    mock.onGet(`/api/v1/entries/${entryId}`).reply(400, {
+  it('update enrty failed', () => {
+    mock.onPut(`/api/v1/entries/${entryId}`).reply(400, {
       progress: 'done',
     });
 
     const mockedActions = [
       {
-        type: GET_SINGLE_ENTRY,
+        type: UPDATE_ENTRY,
         payload: {
           progress: 'ongoing',
         },
       },
       {
-        type: GET_SINGLE_ENTRY_FAILURE,
+        type: UPDATE_ENTRY_FAILURE,
         payload: {
           progress: 'done',
         },
@@ -82,7 +82,7 @@ describe('Actions related with get single entry', () => {
     ];
 
     const store = mockStore({ getSingleEntry: {} });
-    return store.dispatch(getSingleEntry(1)).then(() => {
+    return store.dispatch(updateEntry(entry, entryId)).then(() => {
       expect(store.getActions()).toEqual(mockedActions);
     });
   });

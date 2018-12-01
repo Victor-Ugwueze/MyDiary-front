@@ -12,7 +12,7 @@ import getEntryItems from '../../helpers/entry/entry';
 import Header from './header/Header';
 import SideBar from './sidebar/SideBard';
 import NewEntryModal from './modals/NewEntry';
-import EditEnrtyModal from './modals/EditEntry';
+import EditEntryModal from './modals/EditEntry';
 import ViewSingleArticleModal from './modals/ViewSingleArticle';
 import ChangePasswordModal from './modals/ChangePassword';
 import ListEntrySection from './mainPage/ListEntry';
@@ -36,6 +36,7 @@ class Dashboard extends Component {
     newEntry: false,
     showEntry: false,
     updateEntry: false,
+    entryId: 1,
   };
 
   changePageSection = (event) => {
@@ -62,6 +63,7 @@ class Dashboard extends Component {
     if (prevProps.entries.progress === 'done') {
       this.setState({
         newEntry: false,
+        updateEntry: false,
       });
     }
   };
@@ -97,14 +99,14 @@ class Dashboard extends Component {
 
   closeModal = (event) => {
     this.setState({
-      [event.target.dataset.target]: false
+      [event.target.dataset.target]: false,
     });
   };
 
   validateEntry = (event) => {
     const data = new FormData(event.target);
     const title = data.get('title');
-    const body = data.get('title');
+    const body = data.get('body');
     const errors = validator.validate(
       {
         title,
@@ -129,6 +131,24 @@ class Dashboard extends Component {
     }
   };
 
+  updateEntry = (event) => {
+    const { id, mode } = event.target.dataset;
+    if (mode === 'update') {
+      event.preventDefault();
+      const entry = this.validateEntry(event);
+      console.log(entry);
+      if (entry) {
+        this.props.upate(entry, id);
+      }
+    } else if (mode === 'edit') {
+      this.setState({
+        updateEntry: true,
+        entryId: id,
+      });
+      this.props.getSingleEntry(id);
+    }
+  };
+
   showEntry = (event) => {
     const { id } = event.target.dataset;
     this.setState({
@@ -140,7 +160,14 @@ class Dashboard extends Component {
   render = () => {
     const { user } = this.props.auth;
     const { entries } = this.props.entries;
-    const formatedEntries = getEntryItems(entries, this.updateEntry, this.deleteEntry);
+    const formatedEntries = getEntryItems(
+      entries,
+      this.showEntry,
+      this.updateEntry,
+      this.deleteEntry
+    );
+    const { entry, progress } = this.props.singleEntry;
+
     return (
       <Fragment>
         <Header onClick={this.openSideBar} user={user.user} />
@@ -177,17 +204,24 @@ class Dashboard extends Component {
             close={this.closeModal}
             onSubmit={this.addNewEntry}
           />
+
           <ViewSingleArticleModal
             isOpen={this.state.showEntry}
-            entry={this.props.entry}
+            entry={this.props.singleEntry.entry}
             close={this.closeModal}
           />
-          <EditEnrtyModal isOpen={this.state.updateEntry}/>
+            <EditEntryModal
+              isOpen={this.state.updateEntry}
+              update={this.updateEntry}
+              close={this.closeModal}
+              progress={progress}
+              entry={entry}
+            />
           <ChangePasswordModal />
         </section>
       </Fragment>
     );
-  }
+  };
 }
 
 Dashboard.propTypes = {
@@ -197,7 +231,8 @@ Dashboard.propTypes = {
   entries: PropTypes.object,
   addEntry: PropTypes.func,
   getSingleEntry: PropTypes.func,
-  entry: PropTypes.object,
+  singleEntry: PropTypes.object,
+  upate: PropTypes.func,
 };
 
 export default Dashboard;

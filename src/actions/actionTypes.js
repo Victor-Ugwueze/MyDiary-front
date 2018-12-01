@@ -41,5 +41,5 @@ export const GET_SINGLE_ENTRY_FAILURE = 'GET_SINGLE_ENTRY_FAILURE';
 
 // update diary entry action type
 export const UPDATE_ENTRY = 'UPDATE_ENTRY';
-export const UPDATE_ENTRY_SUCCESS = 'UPDATE_ENTRY';
+export const UPDATE_ENTRY_SUCCESS = 'UPDATE_ENTRY_SUCCESS';
 export const UPDATE_ENTRY_FAILURE = 'UPDATE_ENTRY_FAILURE';

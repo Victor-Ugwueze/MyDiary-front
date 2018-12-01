@@ -42,9 +42,8 @@ export function updateEntryFailure(message) {
 }
 
 
-export const updateEntry = ({ title, body, id }) => (dispatch) => {
+export const updateEntry = ({ title, body }, id) => (dispatch) => {
   const url = process.env.SERVER_URL || '';
-  console.log('hrerererre', title);
   const token = localStorage.getItem('token');
   const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -58,7 +57,7 @@ export const updateEntry = ({ title, body, id }) => (dispatch) => {
   });
   return http
     .put(
-      `${url}/api/v1/entries`,
+      `${url}/api/v1/entries/${id}`,
       {
         token,
         title,

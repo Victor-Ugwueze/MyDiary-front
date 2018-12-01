@@ -14,17 +14,17 @@ import { updateEntry } from '../../actions/entry/updateEntry';
 // store
 import initialState from '../../store/initialState';
 
-const mapStateToProps = (state = initialState.signup) => ({
+const mapStateToProps = (state = initialState) => ({
   auth: state.auth,
   entries: state.entries,
-  entry: state.getSingleEntry.entry
+  singleEntry: state.getSingleEntry
 });
 
 const mapDispatchToProps = {
   addEntry: data => createEntry(data),
   getListEntries: () => getListEntries(),
   getSingleEntry: id => getSingleEntry(id),
-  upate: id => updateEntry(id),
+  upate: (entry, id) => updateEntry(entry, id),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
