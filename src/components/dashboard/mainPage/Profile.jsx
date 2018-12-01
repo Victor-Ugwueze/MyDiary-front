@@ -4,6 +4,9 @@ import React from 'react';
 // third-party libraries
 import PropTypes from 'prop-types';
 
+// components
+import ChangePasswordModal from '../modals/ChangePassword';
+
 const ProfileSection = ({ current }) => (
   <div id='profile' className={`profile-section ${current && 'selected'} tab-pane`}>
     <div className='user-profile'>
@@ -60,6 +63,7 @@ const ProfileSection = ({ current }) => (
         </div>
       </div>
     </div>
+    <ChangePasswordModal />
   </div>
 );
 

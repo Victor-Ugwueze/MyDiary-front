@@ -3,11 +3,17 @@ import React from 'react';
 
 // third-party libraries
 import PropTypes from 'prop-types';
+import alert from 'sweetalert';
 
-const ListEntrySection = ({ current, openNewEntryModal, entries }) => (
+const ListEntrySection = ({
+  current, openNewEntryModal, entries, isDelete
+}) => (
   <div id='diary' className={`dashboard-section tab-pane ${current && 'selected'} container`}>
     <div id='add-entry'>
-      <button className='btn btn-primary add-entry' data-target='add-new-entry' onClick={openNewEntryModal}>
+      <button
+        className='btn btn-primary add-entry'
+        data-target='add-new-entry'
+        onClick={openNewEntryModal}>
         New Entry
       </button>
     </div>
@@ -21,9 +27,7 @@ const ListEntrySection = ({ current, openNewEntryModal, entries }) => (
           Action
         </h4>
       </div>
-      <ul id='dairy-entries' >
-          {entries}
-       </ul>
+      <ul id='dairy-entries'>{entries}</ul>
     </div>
     <div className='pagination' />
     <input type='hidden' id='entryCount' />

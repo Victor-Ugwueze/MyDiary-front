@@ -9,6 +9,7 @@ import { createEntry } from '../../actions/entry/singleEntry';
 import { getListEntries } from '../../actions/entry/listEntry';
 import { getSingleEntry } from '../../actions/entry/getSingleEntry';
 import { updateEntry } from '../../actions/entry/updateEntry';
+import { deleteEntry } from '../../actions/entry/deleteEntry';
 
 
 // store
@@ -25,6 +26,7 @@ const mapDispatchToProps = {
   getListEntries: () => getListEntries(),
   getSingleEntry: id => getSingleEntry(id),
   upate: (entry, id) => updateEntry(entry, id),
+  deleteSingleItem: id => deleteEntry(id),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

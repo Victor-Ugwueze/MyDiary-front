@@ -177,6 +177,7 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
       </div>
     </div>
   </div>
+  <ChangePasswordModal />
 </div>
 `;
 
