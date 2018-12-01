@@ -10,7 +10,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import NewEntry from '../NewEntry';
 import EditModal from '../EditEntry';
 import ChangePassword from '../ChangePassword';
-import ComfirmDelete from '../ConfirmDelete';
+
 
 configure({
   adapter: new Adapter(),
@@ -34,13 +34,6 @@ describe('Renders modals', () => {
   it('should render change password modal', () => {
     const component = shallow(
       <ChangePassword isOpen={true}/>
-    );
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should render confirm delete modal', () => {
-    const component = shallow(
-      <ComfirmDelete isOpen={true}/>
     );
     expect(component).toMatchSnapshot();
   });

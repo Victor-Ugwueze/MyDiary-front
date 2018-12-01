@@ -71,7 +71,7 @@ exports[`Renders modals should render add entry modal 1`] = `
 
 exports[`Renders modals should render change password modal 1`] = `
 <div
-  className="modal"
+  className="modal show"
   id="update-password"
 >
   <div
@@ -156,54 +156,6 @@ exports[`Renders modals should render change password modal 1`] = `
         Updating...
       </span>
     </form>
-  </div>
-</div>
-`;
-
-exports[`Renders modals should render confirm delete modal 1`] = `
-<div
-  className="modal"
-  id="confirm-delete"
->
-  <div
-    className="modal-content col-2"
-  >
-    <div
-      className="modal-heading"
-    >
-      <div
-        id="title"
-      >
-        <h4>
-          Are you sure you want to delete
-        </h4>
-      </div>
-    </div>
-    <div
-      className="modal-body"
-    >
-      <img
-        className="delete-icon"
-        src="/images/icons/delete.png"
-      />
-    </div>
-    <div
-      className="modal-footer"
-    >
-      <div>
-        <button
-          className="btn btn-primary dailog-ok"
-        >
-          Ok
-        </button>
-        <button
-          className="close btn btn-secondary"
-          data-target="confirm-delete"
-        >
-          Cancel
-        </button>
-      </div>
-    </div>
   </div>
 </div>
 `;

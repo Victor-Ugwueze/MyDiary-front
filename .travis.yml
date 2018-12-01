@@ -12,3 +12,5 @@ deploy:
   on:
     repo: Victor-Ugwueze/MyDiary-front
     branch: develop
+after_success:
+- yarn coveralls

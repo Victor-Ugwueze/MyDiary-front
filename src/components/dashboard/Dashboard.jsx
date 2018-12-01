@@ -3,6 +3,7 @@ import React, { Fragment, Component } from 'react';
 
 // third-party libraries
 import PropTypes from 'prop-types';
+import alert from 'sweetalert';
 
 // helpers
 import validator from '../../helpers/validator';
@@ -14,7 +15,6 @@ import SideBar from './sidebar/SideBard';
 import NewEntryModal from './modals/NewEntry';
 import EditEntryModal from './modals/EditEntry';
 import ViewSingleArticleModal from './modals/ViewSingleArticle';
-import ChangePasswordModal from './modals/ChangePassword';
 import ListEntrySection from './mainPage/ListEntry';
 import ProfileSection from './mainPage/Profile';
 import SettingsSection from './mainPage/Settings';
@@ -37,6 +37,7 @@ class Dashboard extends Component {
     showEntry: false,
     updateEntry: false,
     entryId: 1,
+    deletEntry: false,
   };
 
   changePageSection = (event) => {
@@ -157,6 +158,24 @@ class Dashboard extends Component {
     this.props.getSingleEntry(id);
   };
 
+  deletEntry = (event) => {
+    event.preventDefault();
+    const { id, mode } = event.target.dataset;
+    if (mode === 'initiate') {
+      alert({
+        itle: 'Are you sure?',
+        text: 'Are you sure that you want to dele this entry?',
+        icon: 'warning',
+        dangerMode: true,
+      }).then(() => {
+        this.props.deleteSingleItem(id);
+        alert({
+          text: 'Entry deleted successfully'
+        });
+      });
+    }
+  };
+
   render = () => {
     const { user } = this.props.auth;
     const { entries } = this.props.entries;
@@ -164,7 +183,7 @@ class Dashboard extends Component {
       entries,
       this.showEntry,
       this.updateEntry,
-      this.deleteEntry
+      this.deletEntry
     );
     const { entry, progress } = this.props.singleEntry;
 
@@ -189,6 +208,7 @@ class Dashboard extends Component {
               <ListEntrySection
                 entries={formatedEntries}
                 current={this.state.diary}
+                isDelete={this.state.deletEntry}
                 showEntry={this.showEntry}
                 openNewEntryModal={this.showNewEntryModal}
               />
@@ -210,14 +230,13 @@ class Dashboard extends Component {
             entry={this.props.singleEntry.entry}
             close={this.closeModal}
           />
-            <EditEntryModal
-              isOpen={this.state.updateEntry}
-              update={this.updateEntry}
-              close={this.closeModal}
-              progress={progress}
-              entry={entry}
-            />
-          <ChangePasswordModal />
+          <EditEntryModal
+            isOpen={this.state.updateEntry}
+            update={this.updateEntry}
+            close={this.closeModal}
+            progress={progress}
+            entry={entry}
+          />
         </section>
       </Fragment>
     );
@@ -226,13 +245,14 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   height: PropTypes.string,
-  auth: PropTypes.auth,
+  auth: PropTypes.object,
   getListEntries: PropTypes.func,
   entries: PropTypes.object,
   addEntry: PropTypes.func,
   getSingleEntry: PropTypes.func,
   singleEntry: PropTypes.object,
   upate: PropTypes.func,
+  deleteSingleItem: PropTypes.func,
 };
 
 export default Dashboard;
