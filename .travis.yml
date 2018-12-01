@@ -12,5 +12,3 @@ deploy:
   on:
     repo: Victor-Ugwueze/MyDiary-front
     branch: develop
-  run:
-    - yarn build
