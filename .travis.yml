@@ -13,4 +13,4 @@ deploy:
     repo: Victor-Ugwueze/MyDiary-front
     branch: develop
   run:
-    - webpack -p
+    - yarn build

@@ -8,6 +8,9 @@ import {
   GET_SINGLE_ENTRY,
 } from '../actionTypes';
 
+// action
+import { clearProgress } from './listEntry';
+
 /**
  * @desc create new entry success
  * @param {array} entry
@@ -55,6 +58,7 @@ export const getSingleEntry = id => (dispatch) => {
     })
     .then((response) => {
       dispatch(getSingleEntrySuccess(response.data.dairyEntry));
+      dispatch(clearProgress());
     })
     .catch(({ response }) => {
       dispatch(getSingleEntryFailure(response.data.message));

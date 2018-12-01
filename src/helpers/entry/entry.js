@@ -2,9 +2,10 @@
 import React from 'react';
 
 // components
-import SingEntryItem from '../../components/general/entry/SingleEntry';
+import SingleEntryItem from '../../components/general/entry/SingleEntry';
 
-const getFormatedListEntry = (entries, showEntry) => entries
-  .map((entry, index) => <SingEntryItem key={index} entry={entry} showEntry={showEntry}/>);
+const getFormatedListEntry = (entries, showEntry, updateEntry) => entries.map((entry, index) => (
+    <SingleEntryItem key={index} entry={entry} updateEntry={updateEntry} showEntry={showEntry} />
+));
 
 export default getFormatedListEntry;

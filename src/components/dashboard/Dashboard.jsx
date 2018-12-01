@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 
 // helpers
 import validator from '../../helpers/validator';
-import formatEntry from '../../helpers/entry/entry';
+import getEntryItems from '../../helpers/entry/entry';
 
 // components
 import Header from './header/Header';
 import SideBar from './sidebar/SideBard';
 import NewEntryModal from './modals/NewEntry';
-import EditEnrtMoal from './modals/EditEntry';
+import EditEntryModal from './modals/EditEntry';
 import ViewSingleArticleModal from './modals/ViewSingleArticle';
 import ChangePasswordModal from './modals/ChangePassword';
 import ListEntrySection from './mainPage/ListEntry';
@@ -35,6 +35,8 @@ class Dashboard extends Component {
     profile: false,
     newEntry: false,
     showEntry: false,
+    updateEntry: false,
+    entryId: 1,
   };
 
   changePageSection = (event) => {
@@ -61,6 +63,7 @@ class Dashboard extends Component {
     if (prevProps.entries.progress === 'done') {
       this.setState({
         newEntry: false,
+        updateEntry: false,
       });
     }
   };
@@ -96,15 +99,14 @@ class Dashboard extends Component {
 
   closeModal = (event) => {
     this.setState({
-      [event.target.dataset.target]: false
+      [event.target.dataset.target]: false,
     });
   };
 
-  addNewEntry = (event) => {
-    event.preventDefault();
+  validateEntry = (event) => {
     const data = new FormData(event.target);
     const title = data.get('title');
-    const body = data.get('title');
+    const body = data.get('body');
     const errors = validator.validate(
       {
         title,
@@ -113,7 +115,37 @@ class Dashboard extends Component {
       ['entry']
     );
     if (!errors.length > 0) {
-      this.props.addEntry({ title, body });
+      return {
+        title,
+        body,
+      };
+    }
+    return false;
+  };
+
+  addNewEntry = (event) => {
+    event.preventDefault();
+    const entry = this.validateEntry(event);
+    if (event) {
+      this.props.addEntry(entry);
+    }
+  };
+
+  updateEntry = (event) => {
+    const { id, mode } = event.target.dataset;
+    if (mode === 'update') {
+      event.preventDefault();
+      const entry = this.validateEntry(event);
+      console.log(entry);
+      if (entry) {
+        this.props.upate(entry, id);
+      }
+    } else if (mode === 'edit') {
+      this.setState({
+        updateEntry: true,
+        entryId: id,
+      });
+      this.props.getSingleEntry(id);
     }
   };
 
@@ -128,7 +160,14 @@ class Dashboard extends Component {
   render = () => {
     const { user } = this.props.auth;
     const { entries } = this.props.entries;
-    const formatedEntries = formatEntry(entries, this.showEntry);
+    const formatedEntries = getEntryItems(
+      entries,
+      this.showEntry,
+      this.updateEntry,
+      this.deleteEntry
+    );
+    const { entry, progress } = this.props.singleEntry;
+
     return (
       <Fragment>
         <Header onClick={this.openSideBar} user={user.user} />
@@ -165,12 +204,19 @@ class Dashboard extends Component {
             close={this.closeModal}
             onSubmit={this.addNewEntry}
           />
-          <EditEnrtMoal />
+
           <ViewSingleArticleModal
             isOpen={this.state.showEntry}
-            entry={this.props.entry}
+            entry={this.props.singleEntry.entry}
             close={this.closeModal}
           />
+            <EditEntryModal
+              isOpen={this.state.updateEntry}
+              update={this.updateEntry}
+              close={this.closeModal}
+              progress={progress}
+              entry={entry}
+            />
           <ChangePasswordModal />
         </section>
       </Fragment>
@@ -185,7 +231,8 @@ Dashboard.propTypes = {
   entries: PropTypes.object,
   addEntry: PropTypes.func,
   getSingleEntry: PropTypes.func,
-  entry: PropTypes.object,
+  singleEntry: PropTypes.object,
+  upate: PropTypes.func,
 };
 
 export default Dashboard;

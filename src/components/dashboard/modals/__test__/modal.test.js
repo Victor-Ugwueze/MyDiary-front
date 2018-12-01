@@ -26,7 +26,7 @@ describe('Renders modals', () => {
 
   it('should render edit entry modal', () => {
     const component = shallow(
-      <EditModal isOpen={true}/>
+      <EditModal isOpen={true} entry={{ id: 1 }}/>
     );
     expect(component).toMatchSnapshot();
   });

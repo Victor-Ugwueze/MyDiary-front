@@ -3,41 +3,35 @@ import initialState from '../../store/initialState';
 
 // action types
 import {
-  GET_SINGLE_ENTRY,
-  GET_SINGLE_ENTRY_SUCCESS,
-  GET_SINGLE_ENTRY_FAILURE,
-  CLEAR_PROGRESS,
+  UPDATE_ENTRY,
+  UPDATE_ENTRY_SUCCESS,
+  UPDATE_ENTRY_FAILURE,
 } from '../../actions/actionTypes';
 
 /**
  * @param {object} state
  * @param {string} action
- * @desc get single entry reducer
+ * @desc login reducer
  * @returns {object} type
  */
-const entryReducer = (state = initialState.getSingleEntry, action) => {
+const entryReducer = (state = initialState.updateEntry, action) => {
   switch (action.type) {
-    case GET_SINGLE_ENTRY:
+    case UPDATE_ENTRY:
       return {
         ...state,
         progress: action.payload.progress,
       };
-    case GET_SINGLE_ENTRY_SUCCESS:
+    case UPDATE_ENTRY_SUCCESS:
       return {
         ...state,
         progress: action.payload.progress,
-        entry: action.payload.entry,
+        updateEntry: action.payload.entry,
       };
-    case GET_SINGLE_ENTRY_FAILURE:
+    case UPDATE_ENTRY_FAILURE:
       return {
         ...state,
         progress: 'done',
         message: action.payload.message,
-      };
-    case CLEAR_PROGRESS:
-      return {
-        ...state,
-        progress: action.payload.progress,
       };
     default:
       return state;

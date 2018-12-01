@@ -28,7 +28,7 @@ export function getListEntriesSuccess(entries) {
  * @desc clears progress status
  * @returns {object} type
  */
-const clearProgress = () => ({
+export const clearProgress = () => ({
   type: CLEAR_PROGRESS,
   payload: {
     progress: false,
