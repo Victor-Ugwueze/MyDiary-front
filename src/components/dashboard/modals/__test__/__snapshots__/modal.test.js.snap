@@ -166,12 +166,9 @@ exports[`Renders modals should render edit entry modal 1`] = `
   id="edit-diary-entry"
 >
   <div
-    className="modal-content col-2"
+    className="modal-content col-2 loader-container"
   >
-    <img
-      className="loading_spinner_edit"
-      src="/images/icons/loading_spinner3.gif"
-    />
+     
     <div
       className="modal-heading"
     >

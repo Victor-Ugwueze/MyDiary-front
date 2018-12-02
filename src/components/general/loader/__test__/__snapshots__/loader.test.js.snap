@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the loader-spinner should render the list section of dashboard page 1`] = `
+<div
+  className="loader-spiner"
+>
+  <Loader
+    color="#00BFFF"
+    height="100"
+    type="Oval"
+    width="100"
+  />
+  ;
+</div>
+`;

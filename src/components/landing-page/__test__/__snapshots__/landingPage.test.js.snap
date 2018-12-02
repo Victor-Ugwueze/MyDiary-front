@@ -93,7 +93,8 @@ exports[`Renders the singup page should render the login form 1`] = `
       <p
         className="login-small-signup"
       >
-        or 
+        or
+         
         <span>
           <a
             href="#"

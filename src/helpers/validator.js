@@ -67,12 +67,12 @@ const validator = {
   name: () => {
     const firsname = validator.trimSpaces('firstName');
     const lastname = validator.trimSpaces('lastName');
-    if (firsname.length < 2) {
-      const error = 'firsname must should be more than five characters';
+    if (firsname.length < 5) {
+      const error = 'firsname should be more than five characters';
       validator.errors.push({ message: error });
     }
-    if (lastname.length < 2) {
-      const error = 'lastname must be should be more than two characters';
+    if (lastname.length < 5) {
+      const error = 'lastname should be more than two characters';
       validator.errors.push({ message: error });
     }
   },

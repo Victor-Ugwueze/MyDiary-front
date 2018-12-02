@@ -8,6 +8,8 @@ import auth from './auth/auth';
 import createEntry from './entry/addEntry';
 import entries from './entry/getListEntry';
 import getSingleEntry from './entry/getSingleEntry';
+import getProfile from './profile/getProfile';
+
 /**
  * @desc combines all the reducers
 */
@@ -18,4 +20,5 @@ export default combineReducers({
   createEntry,
   entries,
   getSingleEntry,
+  getProfile,
 });

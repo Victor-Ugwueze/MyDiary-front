@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the header of landing page should render herder section of landing page 1`] = `
+<header
+  className="home-header"
+>
+  <img
+    className="loading-indicator"
+    src="/images/icons/loading_spinner3.gif"
+  />
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="brand"
+    >
+      <div>
+        My Dairy
+      </div>
+      <span
+        className="icon-bar hide"
+        id="menu-icon"
+      />
+    </div>
+    <nav>
+      <ul
+        className="navbar"
+      >
+        <li
+          className="nav-link"
+        >
+          <a
+            href="index.html"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          className="nav-link"
+        >
+          <a
+            data-target="sign-up-login"
+            data-toggle="login"
+          >
+            login
+          </a>
+        </li>
+        <li
+          className="nav-link"
+        >
+          <a
+            data-target="sign-up-login"
+            data-toggle="signup"
+            href="#"
+          >
+            Sign up for Free
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div
+    id="intro"
+  >
+    <div
+      id="home-text"
+    >
+      <h1>
+        Welcome to My Diary
+      </h1>
+      <p>
+        A place to pen down all your toughts
+      </p>
+      <a
+        className="btn btn-primary how-it-works-btn"
+        href="#how-it-works"
+      >
+        How It Works
+      </a>
+    </div>
+  </div>
+</header>
+`;

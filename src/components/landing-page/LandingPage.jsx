@@ -31,6 +31,8 @@ class LandingPage extends Component {
     email: '',
     password: '',
     confirmPassword: '',
+    error: '',
+    submitted: false,
   };
 
   openModal = (event) => {
@@ -68,24 +70,42 @@ class LandingPage extends Component {
 
   signup = (event) => {
     event.preventDefault();
+    this.setState({
+      submitted: true,
+    });
     const errors = validator.validate(this.state, ['email', 'password', 'name', 'confirmPassword']);
     if (!errors.length > 0) {
       this.props.register(this.state);
+      return;
     }
+    this.setState({
+      submitted: false,
+      error: errors[0].message,
+    });
   };
 
   login = (event) => {
     event.preventDefault();
+    this.setState({
+      submitted: true,
+    });
     const data = this.getFormInput(event.target);
     const errors = validator.validate(this.state, ['email']);
     if (!errors.length > 0) {
       this.props.doLogin(data);
+      return;
     }
+    this.setState({
+      submitted: false,
+      error: errors[0].message,
+    });
   };
 
   onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
+      submitted: false,
+      error: '',
     });
   };
 
@@ -109,6 +129,9 @@ class LandingPage extends Component {
         <section>
           <Modal isModalOpen={this.state.isModalOpen}>
             <div className='nav-tabs' role='tablist'>
+              <div className={`alert error-flash ${this.state.error !== '' && 'show'}`}>
+                {this.state.error}
+              </div>
               <a
                 className={`nav-item ${this.state.login && 'active'}`}
                 data-toggle='login'
@@ -127,7 +150,12 @@ class LandingPage extends Component {
               </a>
             </div>
             <div className='tab-conten row'>
-              <LoginForm onChange={this.onChange} show={this.state.login} onSubmit={this.login} />
+              <LoginForm
+                onChange={this.onChange}
+                show={this.state.login}
+                onSubmit={this.login}
+                submitted={this.state.submitted}
+              />
               <SignupForm
                 onChange={this.onChange}
                 onSubmit={this.signup}

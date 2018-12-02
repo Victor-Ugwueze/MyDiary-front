@@ -54,9 +54,9 @@ const SideBar = ({
           data-target='profile'
           onClick={onClick}>
           <img className='icon' src='/images/icons/profile_icon_white.png' data-target='profile' />
-          <h3 className='text' role='tab' data-target='profile'>
-            Profile
-          </h3>
+            <h3 className='text' role='tab' data-target='profile'>
+              Profile
+            </h3>
         </div>
       </li>
       <div id='logout' className='nav-item-row nav-it'>
@@ -64,7 +64,7 @@ const SideBar = ({
           <img src='/images/icons/logout.png' />
         </div>
         <div>
-          <Link to="/logout" >Log out</Link>
+          <Link to='/logout'>Log out</Link>
         </div>
       </div>
     </ul>
