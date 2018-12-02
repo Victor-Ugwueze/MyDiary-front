@@ -66,15 +66,14 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
     >
       <div>
         <form
-          encType="application/x-www-htmlform-urlencoded"
           id="update-profile"
+          onSubmit={[Function]}
         >
           <h4>
             Profile Details
           </h4>
           <div
-            className="errors"
-            id="profile-error"
+            className="alert error-flash undefined"
           />
           <div
             className="item"
@@ -87,6 +86,7 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
             <input
               className="htmlform-input"
               name="firstName"
+              onChange={[Function]}
               type="text"
             />
           </div>
@@ -101,6 +101,7 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
             <input
               className="htmlform-input"
               name="lastName"
+              onChange={[Function]}
               type="text"
             />
           </div>
@@ -115,7 +116,9 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
             <input
               className="htmlform-input"
               name="email"
+              onChange={[Function]}
               type="email"
+              value=""
             />
           </div>
           <div
@@ -130,12 +133,15 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
               className="htmlform-input"
               id="location"
               name="location"
+              onChange={[Function]}
               type="text"
+              value=""
             />
           </div>
           <button
             className="btn btn-primary change-password"
             data-target="update-password"
+            onClick={[Function]}
             type="button"
           >
             Change password
@@ -163,15 +169,22 @@ exports[`Renders modals should render the profile section of dashboard page 1`] 
         </h4>
         <span
           id="entries_created"
-        />
+        >
+          you have created 0
+           
+          entry
+        </span>
         <div>
           <p
             className="joined date"
           >
-            Joined 
+            Joined
+             
             <span
               id="date-registered"
-            />
+            >
+              Mon Dec 07 2009
+            </span>
           </p>
         </div>
       </div>

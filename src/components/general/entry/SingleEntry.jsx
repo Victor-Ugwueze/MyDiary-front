@@ -24,7 +24,7 @@ const EntryItem = ({
           data-id={entry.id}
           data-mode='edit'
         />
-        <span className='edit-text' onClick={updateEntry} data-={entry.id} data-mode='edit'>
+        <span className='edit-text' onClick={updateEntry} data-id={entry.id} data-mode='edit'>
           Edit
         </span>
       </span>

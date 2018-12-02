@@ -6,83 +6,85 @@ import MockAdapter from 'axios-mock-adapter';
 
 // import dotenv from 'dotenv';
 
-// action types
+// actionType
+// actionType
 import {
-  SIGNUP_USER,
-  SIGNUP_USER_FAILURE,
-  SIGNUP_USER_SUCCESS,
-  AUTHENTICATE_USER,
+  UPDATE_PROFILE,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_FAILURE,
+  GET_LIST_ENTRIES,
 } from '../../actionTypes';
 
 // action
-import signupAction from '../signup';
+import { updateProfile } from '../updateProfile';
 
-const user = { id: 1, email: 'victor@gmail.com', firstName: 'victor' };
-const token = 'tevhdvchsvdhch ds';
+// dotenv.config();
+const user = {
+  id: 1,
+  email: 'victorugwueze@gmail.com',
+  firstName: 'victor',
+  lastName: 'Victor',
+};
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const mock = new MockAdapter(axios);
 
-describe('Actions related with user signup', () => {
+describe('Actions related with get user profile details', () => {
   afterEach(() => {
     mock.reset();
   });
-  it('User signup is successfully', () => {
-    mock.onPost('/auth/signup').reply(200, {
-      user,
-      token,
-      progress: 'ongoing',
-    });
+  it('get user profile is succcessful', () => {
+    mock.onPut('/api/v1/users/profile').reply(200, user);
 
     const mockedActions = [
       {
-        type: SIGNUP_USER,
+        type: UPDATE_PROFILE,
         payload: {
           progress: 'ongoing',
         },
       },
       {
-        type: SIGNUP_USER_SUCCESS,
+        type: UPDATE_PROFILE_SUCCESS,
         payload: {
           progress: 'done',
+          user,
         },
       },
       {
-        type: AUTHENTICATE_USER,
+        type: GET_LIST_ENTRIES,
         payload: {
-          user,
-          token,
+          progress: 'ongoing',
         },
       },
     ];
 
-    const store = mockStore({ auth: {} });
-    return store.dispatch(signupAction({ user })).then(() => {
+    const store = mockStore({});
+    return store.dispatch(updateProfile(user)).then(() => {
       expect(store.getActions()).toEqual(mockedActions);
     });
   });
-  it('User signup failed', () => {
-    mock.onPost('/auth/signup').reply(400, {
+  it('get user profile failed', () => {
+    mock.onPut('/api/v1/users/profile').reply(401, {
       progress: 'done',
     });
 
     const mockedActions = [
       {
-        type: SIGNUP_USER,
+        type: UPDATE_PROFILE,
         payload: {
           progress: 'ongoing',
         },
       },
       {
-        type: SIGNUP_USER_FAILURE,
+        type: UPDATE_PROFILE_FAILURE,
         payload: {
           progress: 'done',
         },
       },
     ];
 
-    const store = mockStore({ auth: {} });
-    return store.dispatch(signupAction(user)).then(() => {
+    const store = mockStore({ getProfile: {} });
+    return store.dispatch(updateProfile(user)).then(() => {
       expect(store.getActions()).toEqual(mockedActions);
     });
   });

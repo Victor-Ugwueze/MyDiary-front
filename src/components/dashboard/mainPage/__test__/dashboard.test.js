@@ -30,10 +30,10 @@ describe('Renders modals', () => {
     );
     expect(component).toMatchSnapshot();
   });
-
   it('should render the profile section of dashboard page', () => {
+    const getProfile = () => {};
     const component = shallow(
-      <Profile current={false}/>
+      <Profile current={false} userProfile={{ user: { created_at: '12/7/09' } } } getProfile={getProfile}/>
     );
     expect(component).toMatchSnapshot();
   });

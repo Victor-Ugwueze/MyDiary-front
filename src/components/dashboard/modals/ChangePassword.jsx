@@ -1,8 +1,8 @@
 // react libraries
 import React from 'react';
 
-const ChangePasswordModal = () => (
-  <div className='modal show' id='update-password'>
+const ChangePasswordModal = ({ isOpen }) => (
+  <div className={`modal ${isOpen && 'show'}`} id='update-password'>
     <div className='modal-content col-2'>
       <div className='modal-heading row'>
         <div id='title'>

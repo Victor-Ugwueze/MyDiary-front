@@ -25,6 +25,10 @@ const initialState = {
   updateEntry: {
     entry: {}
   },
+  getProfile: {
+    user: {},
+    entryCount: ''
+  }
 };
 
 export default initialState;

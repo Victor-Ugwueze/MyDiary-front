@@ -321,6 +321,11 @@ margin-top: 4%;
 padding: 10px;
 overflow-y: auto;
 }
+#view-single-diary .modal-content,
+#edit-diary-entry .modal-content {
+  min-height: 450px;
+  position: relative;
+}
 #confirm-delete .modal-body{
   margin-bottom: 100px;
   position: relative;

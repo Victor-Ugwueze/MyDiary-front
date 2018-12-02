@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the footer should render the footer of landing page 1`] = `
+<footer>
+  <p>
+    Copywright © My Dairy 2018
+  </p>
+</footer>
+`;

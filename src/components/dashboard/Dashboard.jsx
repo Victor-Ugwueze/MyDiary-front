@@ -170,7 +170,7 @@ class Dashboard extends Component {
       }).then(() => {
         this.props.deleteSingleItem(id);
         alert({
-          text: 'Entry deleted successfully'
+          text: 'Entry deleted successfully',
         });
       });
     }
@@ -212,7 +212,12 @@ class Dashboard extends Component {
                 showEntry={this.showEntry}
                 openNewEntryModal={this.showNewEntryModal}
               />
-              <ProfileSection current={this.state.profile} />
+              <ProfileSection
+                current={this.state.profile}
+                getProfile={this.props.getProfile}
+                userProfile={this.props.userProfile}
+                updateProfile={this.props.updateProfile}
+              />
               <SettingsSection current={this.state.settings} />
               <img src='/images/loading_spinner.gif' className='loading_spinner' />
             </section>
@@ -228,6 +233,7 @@ class Dashboard extends Component {
           <ViewSingleArticleModal
             isOpen={this.state.showEntry}
             entry={this.props.singleEntry.entry}
+            progress={progress}
             close={this.closeModal}
           />
           <EditEntryModal
@@ -253,6 +259,9 @@ Dashboard.propTypes = {
   singleEntry: PropTypes.object,
   upate: PropTypes.func,
   deleteSingleItem: PropTypes.func,
+  getProfile: PropTypes.func,
+  userProfile: PropTypes.object,
+  updateProfile: PropTypes.func,
 };
 
 export default Dashboard;

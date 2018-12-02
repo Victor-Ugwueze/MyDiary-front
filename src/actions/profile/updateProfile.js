@@ -2,22 +2,22 @@
 import http from 'axios';
 
 // actionType
-import { UPDATE_ENTRY, UPDATE_ENTRY_SUCCESS, UPDATE_ENTRY_FAILURE } from '../actionTypes';
+import { UPDATE_PROFILE, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE } from '../actionTypes';
 
 // action
-import { getListEntries } from './listEntry';
+import { getListEntries } from '../entry/listEntry';
 
 /**
  * @desc create new entry success
  * @param {object} data
  * @returns {object} type
  */
-export function updateEntrySuccess(data) {
+export function updateProfileSuccess(data) {
   return {
-    type: UPDATE_ENTRY_SUCCESS,
+    type: UPDATE_PROFILE_SUCCESS,
     payload: {
       progress: 'done',
-      entry: data.createdEntry,
+      user: data,
     },
   };
 }
@@ -27,9 +27,9 @@ export function updateEntrySuccess(data) {
  * @desc checking unsuccessful login
  * @returns {object} type
  */
-export function updateEntryFailure(message) {
+export function updateProfileFailure(message) {
   return {
-    type: UPDATE_ENTRY_FAILURE,
+    type: UPDATE_PROFILE_FAILURE,
     payload: {
       progress: 'done',
       message,
@@ -37,7 +37,7 @@ export function updateEntryFailure(message) {
   };
 }
 
-export const updateEntry = ({ title, body }, id) => (dispatch) => {
+export const updateProfile = data => (dispatch) => {
   const url = process.env.SERVER_URL || '';
   const token = localStorage.getItem('token');
   const headers = {
@@ -45,28 +45,30 @@ export const updateEntry = ({ title, body }, id) => (dispatch) => {
     'x-access-token': `${token}`,
   };
   dispatch({
-    type: UPDATE_ENTRY,
+    type: UPDATE_PROFILE,
     payload: {
       progress: 'ongoing',
     },
   });
   return http
     .put(
-      `${url}/api/v1/entries/${id}`,
+      `${url}/api/v1/users/profile`,
       {
         token,
-        title,
-        body,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        location: data.location,
       },
       {
         headers,
       }
     )
     .then((response) => {
-      dispatch(updateEntrySuccess(response.data));
+      dispatch(updateProfileSuccess(response.data));
       dispatch(getListEntries());
     })
     .catch(({ response }) => {
-      dispatch(updateEntryFailure(response.data.message));
+      dispatch(updateProfileFailure(response.data.message));
     });
 };

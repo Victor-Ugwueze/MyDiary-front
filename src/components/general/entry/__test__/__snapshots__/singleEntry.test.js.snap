@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the single itme component should render SingleEntry 1`] = `
+<li
+  className="entry-item"
+>
+  <div
+    className=""
+  >
+    <h4
+      className="sing-diary-title diary-text"
+      data-id={1}
+    >
+      title
+    </h4>
+    <p
+      className="sing-diary-body diary-text"
+    />
+  </div>
+  <p
+    className="created-at"
+  />
+  <a
+    className="action"
+  >
+    <span
+      className="btn btn-primary action-edit"
+      data-target="edit-diary-entry"
+    >
+      <img
+        className="diary-edit icon-edit"
+        data-id={1}
+        data-mode="edit"
+        src="/images/edit.png"
+      />
+      <span
+        className="edit-text"
+        data-id={1}
+        data-mode="edit"
+      >
+        Edit
+      </span>
+    </span>
+     |
+    <span
+      className="btn btn-danger action-delete"
+    >
+      <img
+        className="diary-edit icon-edit"
+        data-id={1}
+        data-mode="initiate"
+        src="/images/delete-button.png"
+      />
+      <span
+        className="delete-text"
+        data-id={1}
+        data-mode="initiate"
+      >
+        Delete
+      </span>
+    </span>
+  </a>
+  <div
+    className="arrow-up"
+  />
+</li>
+`;

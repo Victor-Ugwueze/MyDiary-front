@@ -62,7 +62,7 @@ describe('Input Validator test', () => {
     const validateErrors = validator.validate({ firstname: '', lastname: '', username: '' }, [
       'name'
     ]);
-    expect(validateErrors[0].message).toBe('firsname must should be more than five characters');
+    expect(validateErrors[0].message).toBe('firsname should be more than five characters');
   });
 
   it('should return password is required', () => {
@@ -84,5 +84,28 @@ describe('Input Validator test', () => {
       'password'
     ]);
     expect(validateErrors[0].message).toBe('Password do not match');
+  });
+
+  it('should return tittle tile length error', () => {
+    const validateErrors = validator.validate({ title: 'tit', body: 'ccdd' }, [
+      'entry'
+    ]);
+    expect(validateErrors[0].message).toBe("title can't be less than 15 characters");
+  });
+
+
+  it('should return entry body missing error', () => {
+    const validateErrors = validator.validate({ title: 'tit', body: '' }, [
+      'entry'
+    ]);
+    expect(validateErrors[1].message).toBe('body cannot be empty');
+    expect(validateErrors[0].message).toBe("title can't be less than 15 characters");
+  });
+
+  it('should not return entry input errors message', () => {
+    const validateErrors = validator.validate({ title: 'the title of my sermmon today is', body: 'the body' }, [
+      'entry'
+    ]);
+    expect(validateErrors.length).toBe(0);
   });
 });
