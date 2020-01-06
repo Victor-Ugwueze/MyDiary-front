@@ -45,7 +45,7 @@
     "jsonwebtoken": "^8.3.0",
     "medium-editor": "^5.23.3",
     "nyc": "^13.1.0",
-    "open": "^0.0.5",
+    "open": "^6.0.0",
     "path": "^0.12.7",
     "popper.js": "^1.14.4",
     "prop-types": "^15.6.2",
