@@ -17,7 +17,7 @@ const LoginForm = ({
         <div className='form-heading'>
           <p>Log in to your account, to acces your journals</p>
         </div>
-        <div className='alert error-flash errors hide-error' id='email-error' />
+        <p className='alert error-flash errors hide-error' id='email-error' />
         <div className='row'>
           <input
             type='text'

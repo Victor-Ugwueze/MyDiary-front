@@ -18,7 +18,7 @@ const SignupForm = ({
         <p>Enjoy the expereinces of having all your thouhgts in one place</p>
       </div>
       <div className='form-row'>
-        <div className='errors alert error-flash hide-error' id='signup-error' />
+        <p className='errors alert error-flash hide-error' id='signup-error' />
         <div className='row'>
           <div className='col-2 form-col'>
             <input
