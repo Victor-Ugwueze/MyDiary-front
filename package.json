@@ -11,7 +11,7 @@
     "build": "webpack --config webpack.config.prod.js",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --progress --hot --open",
     "test": "jest --coverage",
-    "postinstall": "yarn build",
+    "heroku:postinstall": "yarn build",
     "coveralls": "jest --coverage && cat coverage/lcov.info | coveralls"
   },
   "jest": {
@@ -45,7 +45,7 @@
     "jsonwebtoken": "^8.3.0",
     "medium-editor": "^5.23.3",
     "nyc": "^13.1.0",
-    "open": "^0.0.5",
+    "open": "^6.0.0",
     "path": "^0.12.7",
     "popper.js": "^1.14.4",
     "prop-types": "^15.6.2",
@@ -63,6 +63,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
+    "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
     "serve-favicon": "^2.5.0",
     "slick-carousel": "^1.8.1",
