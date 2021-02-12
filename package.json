@@ -11,7 +11,7 @@
     "build": "webpack --config webpack.config.prod.js",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js --progress --hot --open",
     "test": "jest --coverage",
-    "postinstall": "yarn build",
+    "heroku:postinstall": "yarn build",
     "coveralls": "jest --coverage && cat coverage/lcov.info | coveralls"
   },
   "jest": {
@@ -63,6 +63,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
+    "redux-saga": "^0.16.2",
     "redux-thunk": "^2.3.0",
     "serve-favicon": "^2.5.0",
     "slick-carousel": "^1.8.1",
@@ -107,7 +108,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^4.1.4"
   }
 }

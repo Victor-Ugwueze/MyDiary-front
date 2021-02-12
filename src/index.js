@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 // state
-import configureStore from './store/configureStore';
+import configureStore from './redux/store/configureStore';
 
 // action
 import { authenticate, logout } from './actions/auth/auth';
